@@ -266,7 +266,7 @@ input[type=number] {
     display: inline-flex;
     align-items: center;
     border-radius: 100px;
-    background: #F47C20;
+    background: #F81717;
     background-size: 200% auto;
     color: #fff;
     font-size: 16px;
@@ -423,7 +423,7 @@ html[dir=rtl] .social-list li:not(:last-child) {
 }
 
 .social-list a .fa-youtube {
-    color: #F47C20
+    color: #F81717
 }
 
 .social-list a:hover {
@@ -1123,7 +1123,7 @@ html[dir=rtl] .owl-carousel .owl-nav div:first-child {
 }
 
 .bg-red {
-    background-color: #F47C20 !important
+    background-color: #F81717 !important
 }
 
 .-mt-55 {
