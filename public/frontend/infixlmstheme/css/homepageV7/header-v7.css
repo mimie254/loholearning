@@ -1172,7 +1172,8 @@ html[dir=rtl] .offcanvas .heading-links {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .04);
     opacity: 0;
     visibility: hidden;
-    transition: all .3s ease-in-out
+    transition: all .3s ease-in-out;
+    z-index: 999;
 }
 
 .heading-nav .heading-list .submenu li {

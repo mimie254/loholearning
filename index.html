@@ -550,22 +550,56 @@
                         width: 300px;
                     }
                 }
+                /* Header: centered block like reference (logo + nav + buttons as one unit) */
+                #sticky-header .header-inner {
+                    gap: 1.25rem;
+                    padding: 0.5rem 0;
+                    justify-content: center !important;
+                }
+                #sticky-header .header-left {
+                    display: flex;
+                    align-items: center;
+                    gap: 2.5rem;
+                    min-width: 0;
+                }
+                #sticky-header .header-nav {
+                    margin-left: 0;
+                    min-width: 0;
+                }
+                #sticky-header .header-nav .heading-nav {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 0.125rem 1.75rem;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                }
+                #sticky-header .header-nav .heading-list {
+                    flex: 0 0 auto;
+                }
+                #sticky-header .heading-links {
+                    font-size: 0.9375rem;
+                    font-weight: 500;
+                    padding: 0.4rem 0;
+                    white-space: nowrap;
+                    transition: color 0.2s ease;
+                }
+                #sticky-header .heading-links:hover {
+                    opacity: 0.85;
+                }
             </style>
 
             <header class="heading" id="sticky-header">
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-12">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="d-flex align-items-center gap-3">
+                            <div class="d-flex align-items-center w-100 header-inner">
+                                <div class="d-flex align-items-center header-left">
                                     <a href="https://loholearning.co.ke" class="heading-logo d-block">
                             <img src="public/uploads/settings/logo.png" class="home d-block" alt="Infix LMS">
                         </a>
-
-                                   
-                                </div>
-                                <div class="d-flex align-items-center gap-3 flex-grow-1 justify-content-end">
-                                    <nav class="d-none d-lg-block">
+                                    <nav class="d-none d-lg-block header-nav">
                                         <ul class="heading-nav">
 
 
@@ -574,51 +608,24 @@
                                             </li>
 
                                             <li class="heading-list">
-                                                <a class="heading-links" href="#about-loho">About LoHo</a>
+                                                <a class="heading-links" href="#about-loho">About</a>
                                             </li>
 
                                             <li class="heading-list">
-                                                <a class="heading-links" href="#solutions">Solutions</a>
-                                                <ul class="submenu">
-                                                    <li><a href="#solution-elimu-pepe-kenya">Elimu Pepe Kenya (K–12 smart learning)</a></li>
-                                                    <li><a href="#solution-loho-uganda">LoHo Learning Uganda (K–12 smart learning)</a></li>
-                                                    <li><a href="#solution-esharah">eSharah (Inclusive technology suite)</a></li>
-                                                    <li><a href="#solution-loho-campus">LoHo Campus (Higher & lifelong learning)</a></li>
-                                                    <li><a href="#solution-qureo">QUREO (ICT Skills for every learner)</a></li>
-                                                    <li><a href="#solution-tofas">TOFAS (Fundamental Assessment for Mathematics and Coding)</a></li>
-                                                    <li><a href="#solution-simplified-iq">Simplified IQ (Assessment as a Service)</a></li>
-                                                    <li><a href="#solution-content-library">LoHo Content Library (Content as a Service)</a></li>
-                                                    <li><a href="#solution-infrastructure">LoHo Infrastructure (Device as a Service)</a></li>
-                                                    <li><a href="#solution-teacher-academy">Teacher Academy (Digital School for Teachers)</a></li>
-                                                    <li><a href="#solution-managed-services">LoHo Learning Managed Services (Mobile Device Management and Classroom Management Software)</a></li>
-                                                </ul>
+                                                <a class="heading-links" href="#for-schools">Institutions</a>
                                             </li>
 
                                             <li class="heading-list">
-                                                <a class="heading-links" href="#for-schools">For Schools &amp; Organizations</a>
+                                                <a class="heading-links" href="#for-parents">Parents &amp; Learners</a>
                                             </li>
 
                                             <li class="heading-list">
-                                                <a class="heading-links" href="#for-parents">For Parents &amp; Learners</a>
-                                            </li>
-
-                                            <li class="heading-list">
-                                                <a class="heading-links" href="#eresources">eResources</a>
-                                            </li>
-
-                                            <li class="heading-list">
-                                                <a class="heading-links" href="#news-media">News &amp; Media</a>
-                                                <ul class="submenu">
-                                                    <li><a href="#news-media">Blog</a></li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="heading-list">
-                                                <a class="heading-links" href="#">Get Involved</a>
+                                                <a class="heading-links" href="#get-involved" aria-haspopup="true" aria-expanded="false">Get Involved <i class="fas fa-chevron-down ms-1" style="font-size: 0.7em; opacity: 0.9;"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="careers">Careers</a></li>
                                                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="tenders">Tenders</a></li>
                                                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="donate">Donate</a></li>
+                                                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="investors">Investors</a></li>
                                                     <li>
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="contact">Contact Us</a>
                                                         <ul>
@@ -636,7 +643,8 @@
 
                                         </ul>
                                     </nav>
-                                    <div class="heading-end d-flex align-items-center justify-content-end gap-2 gap-lg-3">
+                                </div>
+                                    <div class="heading-end d-flex align-items-center gap-2 gap-lg-3 flex-shrink-0">
 
                                         <div class="position-md-relative mobile-search pe-3">
                                             <div class="mobile-search-box-toggler d-md-none d-lg-flex d-xl-none" id="mobileSearchToggle">
@@ -701,51 +709,24 @@
                         </li>
 
                         <li class="heading-list">
-                            <a class="heading-links" href="#about-loho">About LoHo</a>
+                            <a class="heading-links" href="#about-loho">About</a>
                         </li>
 
                         <li class="heading-list">
-                            <a class="heading-links" href="#solutions">Solutions</a>
-                            <ul class="submenu">
-                                <li><a href="#solution-elimu-pepe-kenya">Elimu Pepe Kenya (K–12 smart learning)</a></li>
-                                <li><a href="#solution-loho-uganda">LoHo Learning Uganda (K–12 smart learning)</a></li>
-                                <li><a href="#solution-esharah">eSharah (Inclusive technology suite)</a></li>
-                                <li><a href="#solution-loho-campus">LoHo Campus (Higher & lifelong learning)</a></li>
-                                <li><a href="#solution-qureo">QUREO (ICT Skills for every learner)</a></li>
-                                <li><a href="#solution-tofas">TOFAS (Fundamental Assessment for Mathematics and Coding)</a></li>
-                                <li><a href="#solution-simplified-iq">Simplified IQ (Assessment as a Service)</a></li>
-                                <li><a href="#solution-content-library">LoHo Content Library (Content as a Service)</a></li>
-                                <li><a href="#solution-infrastructure">LoHo Infrastructure (Device as a Service)</a></li>
-                                <li><a href="#solution-teacher-academy">Teacher Academy (Digital School for Teachers)</a></li>
-                                <li><a href="#solution-managed-services">LoHo Learning Managed Services (Mobile Device Management and Classroom Management Software)</a></li>
-                            </ul>
+                            <a class="heading-links" href="#for-schools">Institutions</a>
                         </li>
 
                         <li class="heading-list">
-                            <a class="heading-links" href="#for-schools">For Schools &amp; Organizations</a>
+                            <a class="heading-links" href="#for-parents">Parents &amp; Learners</a>
                         </li>
 
                         <li class="heading-list">
-                            <a class="heading-links" href="#for-parents">For Parents &amp; Learners</a>
-                        </li>
-
-                        <li class="heading-list">
-                            <a class="heading-links" href="#eresources">eResources</a>
-                        </li>
-
-                        <li class="heading-list">
-                            <a class="heading-links" href="#news-media">News &amp; Media</a>
-                            <ul class="submenu">
-                                <li><a href="#news-media">Blog</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="heading-list">
-                            <a class="heading-links" href="#">Get Involved</a>
+                            <a class="heading-links" href="#get-involved" aria-haspopup="true" aria-expanded="false">Get Involved <i class="fas fa-chevron-down ms-1" style="font-size: 0.7em; opacity: 0.9;"></i></a>
                             <ul class="submenu">
                                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="careers">Careers</a></li>
                                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="tenders">Tenders</a></li>
                                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="donate">Donate</a></li>
+                                <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="investors">Investors</a></li>
                                 <li>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="contact">Contact Us</a>
                                     <ul>
@@ -888,7 +869,7 @@
 
                 // Scroll-spy: highlight header nav for current section (Home, About, Solutions, etc.)
                 (function() {
-                    var sectionIds = ['about-loho', 'solutions', 'for-schools', 'for-parents', 'eresources', 'news-media'];
+                    var sectionIds = ['about-loho', 'for-schools', 'for-parents', 'get-involved'];
                     var headerOffset = 180;
 
                     function getCurrentSection() {
@@ -1005,7 +986,26 @@
                                         width: 100% !important;
                                         height: 100% !important;
                                         object-fit: cover;
+                                        object-position: center;
                                         display: block;
+                                    }
+
+                                    /* Mobile: keep video visible and responsive; ensure it plays */
+                                    @media only screen and (max-width: 767px) {
+                                        .banner-img {
+                                            min-height: 280px;
+                                            max-height: 50vh;
+                                        }
+                                        .banner-img .banner-video {
+                                            display: block !important;
+                                        }
+                                        .banner-img .banner-poster {
+                                            display: none !important;
+                                        }
+                                    }
+
+                                    .banner-img .banner-poster {
+                                        display: none;
                                     }
 
                                     /* subtle overlay so video feels cohesive with UI */
@@ -1114,21 +1114,33 @@
                                         color: #1F2B40
                                     }
 
-                                    /* Desktop/tablet: add a soft light panel behind text for readability over the hero image */
+                                    /* No background panel – heading and text appear as words over the video at all sizes */
+                                    .banner-text {
+                                        background: none !important;
+                                        -webkit-backdrop-filter: none !important;
+                                        backdrop-filter: none !important;
+                                        border: none !important;
+                                        box-shadow: none !important;
+                                    }
+
+                                    .banner-text h1 {
+                                        color: #0d1117;
+                                        text-shadow: 0 0 24px rgba(255, 255, 255, 0.95), 0 1px 3px rgba(255, 255, 255, 0.9), 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 2px rgba(0, 0, 0, 0.5);
+                                    }
+
+                                    .banner-text p {
+                                        color: #141c26;
+                                        text-shadow: 0 0 14px rgba(255, 255, 255, 0.9), 0 1px 2px rgba(255, 255, 255, 0.75), 0 1px 5px rgba(0, 0, 0, 0.35), 0 0 1px rgba(0, 0, 0, 0.45);
+                                    }
+
+                                    /* Desktop/tablet: keep padding only, no panel */
                                     @media only screen and (min-width: 768px) {
                                         .banner-text {
-                                            /* "Glass" look that blends with the image */
-                                            background: rgba(255, 255, 255, 0.55);
-                                            -webkit-backdrop-filter: blur(10px) saturate(140%);
-                                            backdrop-filter: blur(10px) saturate(140%);
-                                            border: 1px solid rgba(255, 255, 255, 0.55);
-                                            border-radius: 22px;
-                                            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
                                             padding: 22px 22px 26px;
                                         }
                                     }
 
-                                    /* Mobile: show hero image (home.png) above content and keep text readable */
+                                    /* Mobile: no background panel – heading and text appear as words over the video */
                                     @media only screen and (max-width: 767px) {
                                         .banner-area {
                                             padding-top: 24px;
@@ -1137,25 +1149,23 @@
                                         .banner-text {
                                             position: relative;
                                             z-index: 2;
-                                            /* Very light tint so video stays prominent; words stay readable via shadow */
-                                            background: rgba(255, 255, 255, 0.18);
-                                            -webkit-backdrop-filter: blur(4px);
-                                            backdrop-filter: blur(4px);
-                                            border: 1px solid rgba(255, 255, 255, 0.25);
-                                            border-radius: 16px;
-                                            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-                                            padding: 20px 18px 24px;
+                                            background: none;
+                                            backdrop-filter: none;
+                                            -webkit-backdrop-filter: none;
+                                            border: none;
+                                            box-shadow: none;
+                                            padding: 20px 0 24px;
                                         }
                                         .banner-text h1 {
                                             font-size: clamp(24px, 6vw, 38px);
                                             color: #0d1117;
-                                            text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5);
+                                            text-shadow: 0 0 24px rgba(255, 255, 255, 0.95), 0 1px 3px rgba(255, 255, 255, 0.9), 0 2px 10px rgba(0, 0, 0, 0.45), 0 0 2px rgba(0, 0, 0, 0.6);
                                         }
                                         .banner-text p {
                                             font-size: 15px;
                                             margin-bottom: 20px;
                                             color: #141c26;
-                                            text-shadow: 0 0 12px rgba(255, 255, 255, 0.85), 0 1px 2px rgba(255, 255, 255, 0.7), 0 1px 4px rgba(0, 0, 0, 0.35), 0 0 1px rgba(0, 0, 0, 0.4);
+                                            text-shadow: 0 0 14px rgba(255, 255, 255, 0.9), 0 1px 2px rgba(255, 255, 255, 0.75), 0 1px 5px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5);
                                         }
                                         .banner-text p:last-of-type {
                                             margin-bottom: 28px;
@@ -1268,20 +1278,22 @@
                                 <form action="https://infixlms.ischooll.com/search">
                                     <div class="banner-area">
                                         <div class="banner-img">
-                                            <video class="banner-video" autoplay muted loop playsinline preload="metadata" poster="public/images/home.png">
+                                            <video class="banner-video" autoplay muted loop playsinline preload="auto" poster="public/images/home.png">
                                                 <source src="public/images/media%204.mp4" type="video/mp4">
                                             </video>
+                                            <img class="banner-poster" src="public/images/home.png" alt="" width="1200" height="630" fetchpriority="high">
                                         </div>
                                         <div class="container">
                                             <div class="row align-items-center">
                                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                                     <div class="banner-text">
                                                         <h1>Making quality education accessible, affordable, and inclusive for every learner.</h1>
+                                                        <!--
                                                         <p class="pe-0 pe-xl-5">LoHo Learning is an education technology company born as a strategic spin-off of Longhorn Publishers PLC, Africa’s leading provider of educational content with a footprint across nine African countries.</p>
                                                         <p class="pe-0 pe-xl-5">By combining Longhorn’s deep educational roots with LoHo’s innovation in technology and pedagogy, we are reimagining how Africa learns — one classroom, one learner, one community at a time.</p>
                                                         <a href="#solutions" class="theme-btn text-capitalize">Explore solutions</a>
                                                         <a href="mailto:support@loholearning.co.ke" class="theme-btn bg-white ms-2 text-capitalize">Talk to our team</a>
-                                                        
+                                                        -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -1291,6 +1303,28 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        (function() {
+                            var video = document.querySelector('.banner-area .banner-video');
+                            if (!video) return;
+                            video.muted = true;
+                            video.setAttribute('playsinline', '');
+                            video.setAttribute('webkit-playsinline', '');
+                            function tryPlay() {
+                                var p = video.play();
+                                if (p && p.catch) p.catch(function() {});
+                            }
+                            if (video.readyState >= 2) {
+                                tryPlay();
+                            } else {
+                                video.addEventListener('loadeddata', tryPlay);
+                                video.addEventListener('canplay', tryPlay);
+                            }
+                            document.addEventListener('visibilitychange', function() {
+                                if (document.visibilityState === 'visible') tryPlay();
+                            });
+                        })();
+                    </script>
                     <div class="row">
                         <div class="col-sm-12 ui-resizable" data-type="container-content">
                             <div data-type="component-text" data-preview="public/frontend/infixlmstheme/img/snippets/preview/counter/3.jpg" data-aoraeditor-title="Counter V3" data-aoraeditor-categories="Home Page;Counter">
@@ -8702,8 +8736,8 @@
                                                     <li>Parents sharing how Elimu Pepe supports learning at home</li>
                                                 </ul>
                                                 <p class="mb-3">Hear directly from the communities we serve.</p>
-                                                <video class="media-video" controls preload="metadata">
-                                                    <source src="public/images/media%204.mp4" type="video/mp4">
+                                                <video class="media-video" controls preload="none" data-src="public/images/media%204.mp4">
+                                                    <source data-src="public/images/media%204.mp4" type="video/mp4">
                                                     Your browser does not support the video tag.
                                                 </video>
                                             </div>
@@ -8791,7 +8825,33 @@
                             openMediaSection(section || 'gallery');
                             var body = modal.querySelector('.modal-body');
                             if (body) body.scrollTop = 0;
+                            if (section === 'videos') {
+                                var mediaVideo = modal.querySelector('.media-video');
+                                var src = mediaVideo && mediaVideo.getAttribute('data-src');
+                                if (mediaVideo && src) {
+                                    var sourceEl = mediaVideo.querySelector('source[data-src]');
+                                    if (sourceEl && !sourceEl.getAttribute('src')) {
+                                        sourceEl.setAttribute('src', src);
+                                        mediaVideo.load();
+                                    }
+                                }
+                            }
                         });
+
+                        var mediaVideosEl = document.getElementById('mediaVideos');
+                        if (mediaVideosEl) {
+                            mediaVideosEl.addEventListener('shown.bs.collapse', function() {
+                                var mediaVideo = modal.querySelector('.media-video');
+                                var src = mediaVideo && mediaVideo.getAttribute('data-src');
+                                if (mediaVideo && src) {
+                                    var sourceEl = mediaVideo.querySelector('source[data-src]');
+                                    if (sourceEl && !sourceEl.getAttribute('src')) {
+                                        sourceEl.setAttribute('src', src);
+                                        mediaVideo.load();
+                                    }
+                                }
+                            });
+                        }
 
                         modal.addEventListener('hidden.bs.modal', function() {
                             var v = modal.querySelector('video');
@@ -8834,6 +8894,129 @@
         </div>
     </div>
 </div>
+
+                <!-- Get Involved section (page section, right after News & Media) -->
+                <div id="get-involved" class="section-margin-lg">
+                    <div class="container">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-lg-8 text-center">
+                                <div class="section-title">
+                                    <h2>Get Involved</h2>
+                                    <p>Careers, tenders, donations, and contact — join our mission for inclusive education.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="accordion" id="getInvolvedSectionAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#giSectionCareers" aria-expanded="true" aria-controls="giSectionCareers">Careers</button>
+                                        </h2>
+                                        <div id="giSectionCareers" class="accordion-collapse collapse show" data-bs-parent="#getInvolvedSectionAccordion">
+                                            <div class="accordion-body">
+                                                <div class="fw-bold text-dark mb-2">Join a mission-driven team to transform education through inclusive technology.</div>
+                                                <p>At LoHo Learning, we are building innovative solutions powered by AI, accessibility design, and curriculum alignment to serve all learners — especially those with disabilities.</p>
+                                                <div class="fw-bold text-dark mt-3 mb-2">Why Work With Us?</div>
+                                                <ul class="solution-feature mb-0">
+                                                    <li>Purpose-driven work with measurable social impact</li>
+                                                    <li>Opportunity to shape inclusive EdTech in Africa</li>
+                                                    <li>Collaborative, innovative, and fast-growing environment</li>
+                                                    <li>Work at the intersection of AI, accessibility, and education</li>
+                                                </ul>
+                                                <div class="fw-bold text-dark mt-3 mb-2">Current Opportunities:</div>
+                                                <p class="mb-2">None at the moment — come back again!</p>
+                                                <a class="theme-btn" href="mailto:careers@loholearning.com?subject=Careers%20at%20LoHo%20Learning">Email careers@loholearning.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#giSectionTenders" aria-expanded="false" aria-controls="giSectionTenders">Tenders</button>
+                                        </h2>
+                                        <div id="giSectionTenders" class="accordion-collapse collapse" data-bs-parent="#getInvolvedSectionAccordion">
+                                            <div class="accordion-body">
+                                                <p class="mb-0">None at the moment — come back again!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#giSectionDonate" aria-expanded="false" aria-controls="giSectionDonate">Donate</button>
+                                        </h2>
+                                        <div id="giSectionDonate" class="accordion-collapse collapse" data-bs-parent="#getInvolvedSectionAccordion">
+                                            <div class="accordion-body">
+                                                <div class="fw-bold text-dark mb-2">Support Inclusive Education for All.</div>
+                                                <p>Your donation helps us:</p>
+                                                <ul class="solution-feature mb-0">
+                                                    <li>Develop Kenya Sign Language (KSL)-interpreted eBooks</li>
+                                                    <li>Build AI-powered accessibility tools</li>
+                                                    <li>Provide accessible learning resources to underserved schools</li>
+                                                    <li>Train teachers in inclusive digital pedagogy</li>
+                                                    <li>Expand assistive technology access for learners with disabilities</li>
+                                                </ul>
+                                                <div class="fw-bold text-dark mt-3 mb-2">Ways to Donate:</div>
+                                                <ul class="solution-feature mb-0">
+                                                    <li>One-Time Donation</li>
+                                                    <li>Monthly Giving Program</li>
+                                                    <li>Corporate Sponsorship</li>
+                                                    <li>Sponsor a School Initiative</li>
+                                                    <li>Device &amp; Connectivity Support</li>
+                                                </ul>
+                                                <p class="mt-3 mb-2">Every contribution brings us closer to a future where every learner — regardless of ability — has equal access to quality education.</p>
+                                                <a class="theme-btn" href="mailto:donate@loholearning.com?subject=Donations%20and%20Sponsorship">Email donate@loholearning.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#giSectionInvestors" aria-expanded="false" aria-controls="giSectionInvestors">Investors</button>
+                                        </h2>
+                                        <div id="giSectionInvestors" class="accordion-collapse collapse" data-bs-parent="#getInvolvedSectionAccordion">
+                                            <div class="accordion-body">
+                                                <p class="mb-0">None at the moment — come back again!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#giSectionContact" aria-expanded="false" aria-controls="giSectionContact">Contact Us</button>
+                                        </h2>
+                                        <div id="giSectionContact" class="accordion-collapse collapse" data-bs-parent="#getInvolvedSectionAccordion">
+                                            <div class="accordion-body">
+                                                <div class="fw-bold text-dark mb-2">We’d love to hear from you.</div>
+                                                <p>Whether you are a school, parent, NGO, corporate partner, policymaker, or donor, LoHo Learning is committed to responding promptly and working collaboratively to advance inclusive education for all learners.</p>
+                                                <div class="fw-bold text-dark mt-3 mb-2">Head Office</div>
+                                                <p class="mb-0"><strong>LoHo Learning</strong><br>9210-00300<br>Funzi Road, Industrial Area<br>Nairobi, Kenya</p>
+                                                <p class="mt-2"><em>(Serving schools and institutions across Kenya and Sub-Saharan Africa.)</em></p>
+                                                <div class="fw-bold text-dark mt-3 mb-2">General Inquiries</div>
+                                                <p class="mb-1"><a href="mailto:Support@loholearning.co.ke">Support@loholearning.co.ke</a></p>
+                                                <div class="fw-bold text-dark mt-3 mb-2">Partnerships &amp; Institutional Collaboration</div>
+                                                <p class="mb-1"><a href="mailto:partnerships@loholearning.com">partnerships@loholearning.com</a></p>
+                                                <div class="fw-bold text-dark mt-3 mb-2">Schools &amp; Teacher Support</div>
+                                                <p class="mb-1"><a href="mailto:schools@loholearning.com">schools@loholearning.com</a></p>
+                                                <div class="fw-bold text-dark mt-3 mb-2">Careers</div>
+                                                <p class="mb-1"><a href="mailto:careers@loholearning.com">careers@loholearning.com</a></p>
+                                                <div class="fw-bold text-dark mt-3 mb-2">Donations &amp; Sponsorship</div>
+                                                <p class="mb-2"><a href="mailto:donate@loholearning.com">donate@loholearning.com</a></p>
+                                                <div class="fw-bold text-dark mt-3 mb-2">Follow Us</div>
+                                                <p class="mb-2">Stay connected for updates on inclusive education, accessibility innovation, and new product releases. Social — Facebook, X, Instagram, LinkedIn, YouTube, TikTok</p>
+                                                <div class="d-flex flex-wrap gap-3">
+                                                    <a href="https://www.facebook.com/Loholearning/" target="_blank" rel="noopener">Facebook</a>
+                                                    <a href="https://x.com/LoHoLearning" target="_blank" rel="noopener">X</a>
+                                                    <a href="https://www.instagram.com/loholearning/" target="_blank" rel="noopener">Instagram</a>
+                                                    <a href="https://ke.linkedin.com/company/loho-learning" target="_blank" rel="noopener">LinkedIn</a>
+                                                    <a href="#" target="_blank" rel="noopener">YouTube</a>
+                                                    <a href="#" target="_blank" rel="noopener">TikTok</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                             </div>
                         </div>
@@ -9152,18 +9335,30 @@
 
             <link rel="stylesheet" href="public/frontend/infixlmstheme/css/homepageV7/footer-v7.css">
             <style>
-                /* Footer Quick Links: show as two columns (stack to one on small screens) */
+                /* Footer Quick Links: 5 columns on large screens, fewer on small */
                 .footer-area .footer-links {
                     column-count: 2;
                     column-gap: 28px;
+                }
+                .footer-area .footer-links-cols {
+                    column-count: 5;
+                    column-gap: 1rem;
                 }
                 .footer-area .footer-links li {
                     break-inside: avoid;
                     -webkit-column-break-inside: avoid;
                 }
+                @media (max-width: 991px) {
+                    .footer-area .footer-links-cols {
+                        column-count: 3;
+                    }
+                }
                 @media (max-width: 575px) {
                     .footer-area .footer-links {
                         column-count: 1;
+                    }
+                    .footer-area .footer-links-cols {
+                        column-count: 2;
                     }
                 }
             </style>
@@ -9180,14 +9375,20 @@
             <div class="col-lg-4 col-md-6">
                 <div class="footer-widget">
                     <h4>Quick Links</h4>
-                    <ul class="footer-links">
+                    <ul class="footer-links footer-links-cols">
+                        <li><a href="#solutions">Solutions</a></li>
+                        <li><a href="#eresources">eResources</a></li>
+                        <li><a href="#news-media">News &amp; Media</a></li>
                         <li><a href="https://elimupepe.loholearning.co.ke">About</a></li>
                         <li><a href="https://elimupepe.loholearning.co.ke/courses">Learning Areas</a></li>
                         <li><a href="https://elimupepe.loholearning.co.ke">Support</a></li>
                         <li><a href="tel:+254790358301">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms &amp; Conditions</a></li>
                         <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="careers">Careers</a></li>
                         <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="tenders">Tenders</a></li>
                         <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="donate">Donate</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="investors">Investors</a></li>
                         <li><a href="#" data-bs-toggle="modal" data-bs-target="#getInvolvedModal" data-gi-target="contact">Contact Us</a></li>
                     </ul>
                 </div>
@@ -9211,7 +9412,7 @@
         </div>
 
         <div class="footer-bottom text-center mt-4">
-            <p>&copy; <script>document.write(new Date().getFullYear());</script> LoHo Learning. All Rights Reserved.</p>
+            <p>&copy; <script>document.write(new Date().getFullYear());</script> LoHo Learning. All Rights Reserved. <a href="privacy.html" class="text-reset text-decoration-underline">Privacy Policy</a> &middot; <a href="terms.html" class="text-reset text-decoration-underline">Terms &amp; Conditions</a></p>
         </div>
     </div>
 </footer>
@@ -9321,6 +9522,10 @@
                             </div>
                             <div class="modal-body">
                                 <style>
+                                    #getInvolvedModal {
+                                        z-index: 1060 !important;
+                                    }
+                                    body .modal-backdrop { z-index: 1050 !important; }
                                     #getInvolvedModal .modal-body,
                                     #getInvolvedModal .modal-body p,
                                     #getInvolvedModal .modal-body li {
@@ -9356,7 +9561,7 @@
                                                     <li>Collaborative, innovative, and fast-growing environment</li>
                                                     <li>Work at the intersection of AI, accessibility, and education</li>
                                                 </ul>
-                                                <div class="gi-title gi-accent mt-3 mb-2">Current Opportunities</div>
+                                                <div class="gi-title gi-accent mt-3 mb-2">Current Opportunities:</div>
                                                 <p class="mb-2">None at the moment — come back again!</p>
                                                 <a class="theme-btn" href="mailto:careers@loholearning.com?subject=Careers%20at%20LoHo%20Learning">Email careers@loholearning.com</a>
                                             </div>
@@ -9407,6 +9612,19 @@
                                         </div>
                                     </div>
 
+                                    <div class="accordion-item" data-gi-section="investors">
+                                        <h2 class="accordion-header" id="giHeadingInvestors">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#giInvestors" aria-expanded="false" aria-controls="giInvestors">
+                                                Investors
+                                            </button>
+                                        </h2>
+                                        <div id="giInvestors" class="accordion-collapse collapse" aria-labelledby="giHeadingInvestors" data-bs-parent="#giAccordion">
+                                            <div class="accordion-body">
+                                                <p class="mb-0">None at the moment — come back again!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="accordion-item" data-gi-section="contact">
                                         <h2 class="accordion-header" id="giHeadingContact">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#giContact" aria-expanded="false" aria-controls="giContact">
@@ -9433,6 +9651,7 @@
 
                                                 <div class="gi-title gi-accent mt-3 mb-2">Follow Us</div>
                                                 <p class="mb-2">Stay connected for updates on inclusive education, accessibility innovation, and new product releases.</p>
+                                                <p class="mb-2 small">Social — Facebook, X, Instagram, LinkedIn, YouTube, TikTok</p>
                                                 <div class="d-flex flex-wrap gap-3 gi-links">
                                                     <a href="https://www.facebook.com/Loholearning/" target="_blank" rel="noopener">Facebook</a>
                                                     <a href="https://x.com/LoHoLearning" target="_blank" rel="noopener">X</a>
@@ -9461,6 +9680,7 @@
                                 careers: 'giCareers',
                                 tenders: 'giTenders',
                                 donate: 'giDonate',
+                                investors: 'giInvestors',
                                 contact: 'giContact'
                             };
                             var targetId = map[section] || map.careers;
@@ -9540,7 +9760,7 @@
                             <img src="public/frontend/infixlmstheme/img/icon/cookies_icon.svg" alt="">
                         </div>
                         <p>We collect and use cookies to give you the best and most relevant website experience. Kindly accept the cookies.
-                            <a href=''>Privacy Policy</a>
+                            <a href="privacy.html">Privacy Policy</a>
                         </p>
                         <button type="button" class="cookie_btn" onclick="setCookies(1);">I Accept</button>
                         <button type="button" class="cookie_btn cookeSettingModalBtn">Customize Setting</button>
