@@ -1,5 +1,8 @@
 name: Deploy to GitHub Pages
 
+# Pushes the repo to the gh-pages branch. For the site to be live, in repo
+# Settings → Pages set Source to "Deploy from a branch" and Branch to "gh-pages".
+
 on:
   push:
     branches: ["main"]
