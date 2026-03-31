@@ -1,0 +1,159 @@
+/* Collapsible landing sections — keeps full content, shortens initial scroll */
+.loho-compact {
+    position: relative;
+    margin-top: 0;
+}
+
+.loho-compact-inner {
+    position: relative;
+    transition: max-height 0.5s ease;
+}
+
+.loho-compact:not(.is-open) .loho-compact-inner {
+    max-height: var(--loho-compact-max, 280px);
+    overflow: hidden;
+}
+
+.loho-compact.is-open .loho-compact-inner {
+    max-height: none;
+    overflow: visible;
+}
+
+.loho-compact:not(.is-open) .loho-compact-inner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 64px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.96));
+}
+
+.blog .loho-compact:not(.is-open) .loho-compact-inner::after {
+    background: linear-gradient(to bottom, rgba(248, 249, 252, 0), rgba(248, 249, 252, 0.97));
+}
+
+.apk .loho-compact:not(.is-open) .loho-compact-inner::after {
+    background: linear-gradient(to bottom, rgba(56, 72, 92, 0), rgba(56, 72, 92, 0.98));
+}
+
+.apk .loho-compact-toggle {
+    color: #cee8ff;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.apk .loho-compact-toggle:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #cee8ff;
+    color: #fff;
+}
+
+.loho-compact-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 10px 20px;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--system_primery_color, #38485c);
+    background: #fff;
+    border: 2px solid rgba(31, 43, 64, 0.18);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.loho-compact-toggle:hover {
+    border-color: var(--system_primery_color, #38485c);
+    background: rgba(206, 232, 255, 0.35);
+}
+
+.loho-compact.is-open .loho-compact-toggle {
+    margin-bottom: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loho-compact-inner {
+        transition: none;
+    }
+}
+
+/* Header: snippet dropdowns (desktop) */
+.heading-nav .heading-list .submenu.submenu--peek {
+    min-width: 260px;
+    max-width: 300px;
+    padding: 12px 14px 14px;
+}
+
+.heading-nav .heading-list .submenu.submenu--peek .loho-peek-text {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--system_paragraph_color, #656a7b);
+    margin: 0 0 10px;
+}
+
+.heading-nav .heading-list .submenu.submenu--peek .loho-peek-more {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--system_primery_color, #38485c);
+    text-decoration: none;
+}
+
+.heading-nav .heading-list .submenu.submenu--peek .loho-peek-more:hover {
+    text-decoration: underline;
+}
+
+.heading-nav .heading-list .submenu.submenu--peek-wide {
+    min-width: 280px;
+    max-width: 320px;
+}
+
+.heading-nav .heading-list .submenu.submenu--peek li {
+    padding: 0;
+    border: 0;
+}
+
+.heading-nav .heading-list .submenu.submenu--peek li + li {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(31, 43, 64, 0.1);
+}
+
+.heading-nav .heading-list .submenu.submenu--peek li a.heading-links {
+    display: block;
+    padding: 0 0 4px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.heading-nav .heading-list .submenu.submenu--peek .loho-peek-line {
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--system_paragraph_color, #656a7b);
+    margin: 0;
+}
+
+/* Mobile offcanvas: one-line teasers under main links */
+@media (max-width: 991.98px) {
+    .loho-offcanvas-teaser {
+        font-size: 12px;
+        line-height: 1.4;
+        color: var(--system_paragraph_color, #656a7b);
+        margin: -6px 0 10px 2px;
+        padding-right: 8px;
+    }
+}
+
+@media (min-width: 992px) {
+    .loho-offcanvas-teaser {
+        display: none !important;
+    }
+}
