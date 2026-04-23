@@ -643,7 +643,7 @@
                                                 <ul class="submenu submenu--peek">
                                                     <li>
                                                         <p class="loho-peek-text">Who we are, our mission, and how we bridge the learning divide with inclusive digital education.</p>
-                                                        <a href="#about-loho" class="loho-peek-more" data-loho-expand="about-loho">Read more below</a>
+                                                        <a href="#about-loho" class="loho-peek-more">Jump to About</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -653,7 +653,7 @@
                                                 <ul class="submenu submenu--peek">
                                                     <li>
                                                         <p class="loho-peek-text">Tools, data, and accessibility for teachers and schools—KICD-aligned resources and analytics.</p>
-                                                        <a href="#for-schools" class="loho-peek-more" data-loho-expand="for-schools">Read more below</a>
+                                                        <a href="#for-schools" class="loho-peek-more">Jump to Institutions</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -785,7 +785,7 @@
 
                         <li class="heading-list">
                             <a class="heading-links" href="#about-loho">About</a>
-                            <p class="loho-offcanvas-teaser">Mission, story, and impact—tap Read more on the page to expand the full section.</p>
+                            <p class="loho-offcanvas-teaser">Our story is on the page—tap the orange topics below the intro to explore each part.</p>
                         </li>
 
                         <li class="heading-list">
@@ -1236,7 +1236,7 @@
                                     }
 
                                     .banner-text h1 {
-                                        font-size: 64px;
+                                        font-size: 52px;
                                         line-height: 1.25;
                                         margin-bottom: 30px;
                                         color: #1F2B40
@@ -1244,25 +1244,25 @@
 
                                     @media only screen and (min-width: 1280px) and (max-width: 1439px) {
                                         .banner-text h1 {
-                                            font-size: 54px
+                                            font-size: 44px
                                         }
                                     }
 
                                     @media only screen and (min-width: 992px) and (max-width: 1279px) {
                                         .banner-text h1 {
-                                            font-size: 50px
+                                            font-size: 41px
                                         }
                                     }
 
                                     @media only screen and (min-width: 768px) and (max-width: 991px) {
                                         .banner-text h1 {
-                                            font-size: 44px
+                                            font-size: 36px
                                         }
                                     }
 
                                     @media only screen and (max-width: 767px) {
                                         .banner-text h1 {
-                                            font-size: 38px
+                                            font-size: 32px
                                         }
                                     }
 
@@ -1299,6 +1299,67 @@
                                         text-shadow: 0 0 24px rgba(255, 255, 255, 0.95), 0 1px 3px rgba(255, 255, 255, 0.9), 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 2px rgba(0, 0, 0, 0.5);
                                     }
 
+                                    /* Hero headline: words appear one after another over the video */
+                                    .banner-headline-typewriter {
+                                        line-height: 1.22;
+                                    }
+
+                                    .banner-headline-words {
+                                        display: block;
+                                    }
+
+                                    @keyframes banner-headline-flash {
+                                        0%, 100% { filter: brightness(1); transform: scale(1); }
+                                        45% { filter: brightness(1.45); transform: scale(1.02); }
+                                    }
+
+                                    .banner-headline-words.is-headline-flash {
+                                        animation: banner-headline-flash 0.26s ease-out;
+                                    }
+
+                                    .banner-headline-typewriter.is-headline-collapsing .banner-headline-word {
+                                        transition: opacity 0.18s ease, transform 0.2s ease, filter 0.18s ease;
+                                    }
+
+                                    .banner-headline-word {
+                                        display: inline-block;
+                                        margin-right: 0.18em;
+                                        margin-bottom: 0.04em;
+                                        opacity: 0;
+                                        transform: translateY(0.45em);
+                                        filter: blur(6px);
+                                        transition: opacity 0.38s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+                                    }
+
+                                    .banner-headline-word.is-visible {
+                                        opacity: 1;
+                                        transform: translateY(0);
+                                        filter: blur(0);
+                                    }
+
+                                    .banner-headline-word.is-brand {
+                                        margin-right: 0.32em;
+                                    }
+
+                                    .banner-headline-word.is-brand .banner-headline-inner {
+                                        color: var(--system_primery_color, #38485c);
+                                        font-weight: 800;
+                                        letter-spacing: -0.03em;
+                                        text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 2px 12px rgba(0, 0, 0, 0.35);
+                                    }
+
+                                    @media (prefers-reduced-motion: reduce) {
+                                        .banner-headline-words.is-headline-flash {
+                                            animation: none;
+                                        }
+                                        .banner-headline-word {
+                                            opacity: 1;
+                                            transform: none;
+                                            filter: none;
+                                            transition: none;
+                                        }
+                                    }
+
                                     .banner-text p {
                                         color: #141c26;
                                         text-shadow: 0 0 14px rgba(255, 255, 255, 0.9), 0 1px 2px rgba(255, 255, 255, 0.75), 0 1px 5px rgba(0, 0, 0, 0.35), 0 0 1px rgba(0, 0, 0, 0.45);
@@ -1328,7 +1389,7 @@
                                             padding: 20px 0 24px;
                                         }
                                         .banner-text h1 {
-                                            font-size: clamp(24px, 6vw, 38px);
+                                            font-size: clamp(20px, 5.2vw, 32px);
                                             color: #0d1117;
                                             text-shadow: 0 0 24px rgba(255, 255, 255, 0.95), 0 1px 3px rgba(255, 255, 255, 0.9), 0 2px 10px rgba(0, 0, 0, 0.45), 0 0 2px rgba(0, 0, 0, 0.6);
                                         }
@@ -1345,7 +1406,7 @@
 
                                     @media only screen and (max-width: 479px) {
                                         .banner-text h1 {
-                                            font-size: 22px;
+                                            font-size: 18px;
                                             color: #0f1419;
                                         }
                                         .banner-text p {
@@ -1458,7 +1519,21 @@
                                             <div class="row align-items-center">
                                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                                     <div class="banner-text">
-                                                        <h1>Making quality education accessible, affordable, and inclusive for every learner.</h1>
+                                                        <h1 class="banner-headline-typewriter" aria-label="LoHo — Making quality education accessible, affordable, and inclusive for every learner.">
+                                                            <span class="banner-headline-words" aria-hidden="true">
+                                                                <span class="banner-headline-word is-brand"><span class="banner-headline-inner">LoHo</span></span>
+                                                                <span class="banner-headline-word"><span class="banner-headline-inner">Making</span></span>
+                                                                <span class="banner-headline-word"><span class="banner-headline-inner">quality</span></span>
+                                                                <span class="banner-headline-word"><span class="banner-headline-inner">education</span></span>
+                                                                <span class="banner-headline-word"><span class="banner-headline-inner">accessible,</span></span>
+                                                                <span class="banner-headline-word"><span class="banner-headline-inner">affordable,</span></span>
+                                                                <span class="banner-headline-word"><span class="banner-headline-inner">and</span></span>
+                                                                <span class="banner-headline-word"><span class="banner-headline-inner">inclusive</span></span>
+                                                                <span class="banner-headline-word"><span class="banner-headline-inner">for</span></span>
+                                                                <span class="banner-headline-word"><span class="banner-headline-inner">every</span></span>
+                                                                <span class="banner-headline-word"><span class="banner-headline-inner">learner.</span></span>
+                                                            </span>
+                                                        </h1>
                                                         <!--
                                                         <p class="pe-0 pe-xl-5">LoHo Learning is an education technology company born as a strategic spin-off of Longhorn Publishers PLC, Africa’s leading provider of educational content with a footprint across nine African countries.</p>
                                                         <p class="pe-0 pe-xl-5">By combining Longhorn’s deep educational roots with LoHo’s innovation in technology and pedagogy, we are reimagining how Africa learns — one classroom, one learner, one community at a time.</p>
@@ -1493,6 +1568,139 @@
                             }
                             document.addEventListener('visibilitychange', function() {
                                 if (document.visibilityState === 'visible') tryPlay();
+                            });
+                        })();
+                    </script>
+                    <script>
+                        (function() {
+                            var root = document.querySelector('.banner-headline-typewriter');
+                            if (!root) return;
+                            var words = root.querySelectorAll('.banner-headline-word');
+                            if (!words.length) return;
+                            var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                            if (reduced) {
+                                words.forEach(function(w) { w.classList.add('is-visible'); });
+                                return;
+                            }
+                            var stepMs = 165;
+                            var holdAfterLastWordMs = 320;
+                            var flashMs = 280;
+                            var collapseTransitionMs = 220;
+                            var tickId;
+                            var pauseId;
+                            var started = false;
+                            function clearTimers() {
+                                if (tickId) clearInterval(tickId);
+                                tickId = null;
+                                if (pauseId) clearTimeout(pauseId);
+                                pauseId = null;
+                            }
+                            function resetWords() {
+                                words.forEach(function(w) { w.classList.remove('is-visible'); });
+                            }
+                            function playSequence() {
+                                clearTimers();
+                                resetWords();
+                                var i = 0;
+                                tickId = setInterval(function() {
+                                    if (i < words.length) {
+                                        words[i].classList.add('is-visible');
+                                        i++;
+                                    } else {
+                                        clearInterval(tickId);
+                                        tickId = null;
+                                        var wordsWrap = root.querySelector('.banner-headline-words');
+                                        pauseId = setTimeout(function() {
+                                            pauseId = null;
+                                            if (wordsWrap) wordsWrap.classList.add('is-headline-flash');
+                                            pauseId = setTimeout(function() {
+                                                pauseId = null;
+                                                if (wordsWrap) wordsWrap.classList.remove('is-headline-flash');
+                                                root.classList.add('is-headline-collapsing');
+                                                resetWords();
+                                                pauseId = setTimeout(function() {
+                                                    pauseId = null;
+                                                    root.classList.remove('is-headline-collapsing');
+                                                }, collapseTransitionMs);
+                                            }, flashMs);
+                                        }, holdAfterLastWordMs);
+                                    }
+                                }, stepMs);
+                            }
+                            var videoEl = document.querySelector('.banner-area .banner-video');
+                            var ioRef = null;
+                            var bootstrapTimeoutId = null;
+                            var videoFallbackDelayId = null;
+                            var onPlayingOnce = null;
+                            function clearHeadlineBootstrap() {
+                                if (bootstrapTimeoutId) {
+                                    clearTimeout(bootstrapTimeoutId);
+                                    bootstrapTimeoutId = null;
+                                }
+                                if (videoFallbackDelayId) {
+                                    clearTimeout(videoFallbackDelayId);
+                                    videoFallbackDelayId = null;
+                                }
+                                if (ioRef) {
+                                    ioRef.disconnect();
+                                    ioRef = null;
+                                }
+                                if (videoEl && onPlayingOnce) {
+                                    videoEl.removeEventListener('playing', onPlayingOnce);
+                                    onPlayingOnce = null;
+                                }
+                            }
+                            function beginHeadlineOnce() {
+                                if (started) return;
+                                started = true;
+                                clearHeadlineBootstrap();
+                                playSequence();
+                            }
+                            function startFallbackWatch() {
+                                if (started) return;
+                                ioRef = new IntersectionObserver(function(entries) {
+                                    entries.forEach(function(entry) {
+                                        if (entry.isIntersecting && entry.intersectionRatio > 0.12) {
+                                            beginHeadlineOnce();
+                                        }
+                                    });
+                                }, { threshold: [0, 0.12, 0.25] });
+                                ioRef.observe(root);
+                                bootstrapTimeoutId = setTimeout(function() {
+                                    bootstrapTimeoutId = null;
+                                    if (!started) beginHeadlineOnce();
+                                }, 900);
+                            }
+                            function armHeadlineStart() {
+                                if (started) return;
+                                if (videoEl) {
+                                    if (!videoEl.paused && videoEl.readyState >= 2) {
+                                        beginHeadlineOnce();
+                                        return;
+                                    }
+                                    onPlayingOnce = function() {
+                                        beginHeadlineOnce();
+                                    };
+                                    videoEl.addEventListener('playing', onPlayingOnce, { once: true });
+                                    videoFallbackDelayId = setTimeout(function() {
+                                        videoFallbackDelayId = null;
+                                        if (videoEl && onPlayingOnce) {
+                                            videoEl.removeEventListener('playing', onPlayingOnce);
+                                            onPlayingOnce = null;
+                                        }
+                                        if (!started) startFallbackWatch();
+                                    }, 2000);
+                                } else {
+                                    startFallbackWatch();
+                                }
+                            }
+                            if (document.readyState === 'loading') {
+                                document.addEventListener('DOMContentLoaded', armHeadlineStart);
+                            } else {
+                                armHeadlineStart();
+                            }
+                            document.addEventListener('visibilitychange', function() {
+                                if (document.visibilityState === 'hidden') clearTimers();
                             });
                         })();
                     </script>
@@ -4625,7 +4833,7 @@
                                         color: #777E93 !important
                                     }
                                 </style>
-                                <div id="about-loho" class="about section-margin-lg" data-loho-compact="300" data-loho-compact-label="About us">
+                                <div id="about-loho" class="about section-margin-lg">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 text-center">
@@ -4638,26 +4846,111 @@
 
         <style>
             .about-details {
-                border: 1px solid rgba(31, 43, 64, 0.12);
-                border-radius: 14px;
-                background: #fff;
-                padding: 14px 16px;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+                border: none;
+                border-radius: 0;
+                background: transparent;
+                padding: 0;
+                box-shadow: none;
             }
 
-            .about-details + .about-details {
-                margin-top: 12px;
+            .about-details-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                grid-template-rows: repeat(2, auto);
+                gap: 10px;
+                margin-top: 28px;
+                align-items: start;
+            }
+
+            .about-details-grid .about-details + .about-details {
+                margin-top: 0;
+            }
+
+            .about-details-grid .about-details summary {
+                font-size: clamp(0.78rem, 1.1vw, 0.92rem);
+                line-height: 1.25;
+                padding: 12px 14px;
+                text-align: left;
+                min-height: 3.25rem;
+                align-items: center;
+            }
+
+            @media only screen and (max-width: 991px) {
+                .about-details-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    grid-template-rows: auto;
+                }
+            }
+
+            @media only screen and (max-width: 575px) {
+                .about-details-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    gap: 8px;
+                }
+                .about-details-grid .about-details summary {
+                    font-size: 0.75rem;
+                    padding: 10px 10px;
+                    min-height: 2.85rem;
+                }
             }
 
             .about-details summary {
                 cursor: pointer;
-                font-weight: 600;
-                color: #1F2B40;
+                font-weight: 700;
+                font-size: 1rem;
+                color: #fff;
                 list-style: none;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                gap: 10px;
+                gap: 12px;
+                padding: 14px 20px;
+                border-radius: 12px;
+                background: linear-gradient(180deg, #fb923c 0%, #ea580c 55%, #c2410c 100%);
+                box-shadow: 0 2px 0 rgba(0, 0, 0, 0.12), 0 10px 24px rgba(234, 88, 12, 0.35);
+                border: 1px solid rgba(255, 255, 255, 0.22);
+                transition: filter 0.15s ease, box-shadow 0.15s ease;
+            }
+
+            .about-details summary:hover {
+                filter: brightness(1.06);
+            }
+
+            .about-details summary:focus {
+                outline: none;
+            }
+
+            .about-details summary:focus-visible {
+                outline: 3px solid #1f2b40;
+                outline-offset: 3px;
+            }
+
+            .about-details[open] summary {
+                border-radius: 12px 12px 0 0;
+                box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+            }
+
+            .about-details-panel {
+                border: 1px solid rgba(31, 43, 64, 0.12);
+                border-top: none;
+                border-radius: 0 0 14px 14px;
+                background: #fff;
+                padding: 16px 14px 18px;
+                box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+                font-size: 0.9rem;
+                line-height: 1.45;
+            }
+
+            @media only screen and (min-width: 992px) {
+                .about-details-grid .about-details-panel {
+                    column-count: 2;
+                    column-gap: 1.25rem;
+                }
+                .about-details-grid .about-details-panel p,
+                .about-details-grid .about-details-panel ul,
+                .about-details-grid .about-details-panel ol {
+                    break-inside: avoid;
+                }
             }
 
             .about-details summary::-webkit-details-marker {
@@ -4666,9 +4959,11 @@
 
             .about-details summary::after {
                 content: "+";
-                font-size: 20px;
+                font-size: 22px;
+                font-weight: 500;
                 line-height: 1;
-                opacity: 0.75;
+                opacity: 0.92;
+                flex-shrink: 0;
             }
 
             .about-details[open] summary::after {
@@ -4743,9 +5038,10 @@
                     <p>Through curriculum-aligned content, assistive tools, and teacher-support resources, we make quality learning possible in every classroom — even in low-connectivity or off-grid environments.</p>
                     <p>Our solutions combine technology, local relevance, and inclusion to bridge the gap between traditional classrooms and the future of learning. Because when digital education becomes inclusive, every mind can dream, learn, and achieve.</p>
 
-                    <details class="about-details" open>
+                    <div class="about-details-grid" role="presentation">
+                    <details class="about-details">
                         <summary>The Learning Divide</summary>
-                        <div class="pt-2">
+                        <div class="about-details-panel">
                             <p>Across Africa, over 80 percent of learners remain excluded from digital education. High textbook costs, limited connectivity, and resource gaps prevent schools — particularly in rural areas — from delivering engaging, modern instruction.</p>
                             <p>Learners with disabilities face even greater barriers, deepening inequality in access and outcomes. Without affordable, relevant digital content, millions of learners risk being left behind in a world that increasingly runs on knowledge and technology.</p>
                         </div>
@@ -4753,7 +5049,7 @@
 
                     <details class="about-details">
                         <summary>Bridging the Divide</summary>
-                        <div class="pt-2">
+                        <div class="about-details-panel">
                             <p>With an offline-first, curriculum-aligned digital platform, LoHo Learning connects learners, teachers, and parents within one inclusive ecosystem.</p>
                             <p>Our approach focuses on content, pedagogy, and support — not just devices — ensuring that digital transformation strengthens existing classrooms instead of replacing them.</p>
                             <ul class="mb-0">
@@ -4766,7 +5062,7 @@
 
                     <details class="about-details">
                         <summary>Impact</summary>
-                        <div class="pt-2">
+                        <div class="about-details-panel">
                             <p>LoHo Learning is reimagining how education works across Africa, connecting teachers, learners, and schools through one inclusive digital ecosystem.</p>
                             <ul class="mb-0">
                                 <li>500+ schools onboarded across Kenya.</li>
@@ -4778,7 +5074,7 @@
 
                     <details class="about-details">
                         <summary>Content &amp; Innovation</summary>
-                        <div class="pt-2">
+                        <div class="about-details-panel">
                             <ul class="mb-0">
                                 <li>2,000+ LoHo TV videos driving interactive learning.</li>
                                 <li>3,000+ curriculum-aligned resources — textbooks, reference materials, and digital lessons.</li>
@@ -4790,7 +5086,7 @@
 
                     <details class="about-details">
                         <summary>Why we exist</summary>
-                        <div class="pt-2">
+                        <div class="about-details-panel">
                             <p><strong>Vision:</strong> To be the leading education technology company in Africa by empowering minds and therefore changing Lives.</p>
                             <p><strong>Mission:</strong> To make education accessible, affordable, and inclusive.</p>
                             <p class="mb-2"><strong>Pillars</strong></p>
@@ -4805,7 +5101,7 @@
 
                     <details class="about-details">
                         <summary>Why we’re trusted</summary>
-                        <div class="pt-2">
+                        <div class="about-details-panel">
                             <p>LoHo Learning is an EdTech company that transforms education through accessible, AI-powered digital learning solutions for all learners, including learners with disabilities.</p>
                             <p>We are backed by the heritage of Longhorn Publishers PLC, a publicly listed Pan-African publisher established in 1965 and trusted for decades to deliver curriculum-approved educational content across East and Central Africa.</p>
                             <p><strong>Our Focus at LoHo Learning</strong></p>
@@ -4821,7 +5117,7 @@
 
                     <details class="about-details">
                         <summary>Leadership, evidence &amp; partnerships</summary>
-                        <div class="pt-2">
+                        <div class="about-details-panel">
                             <ul>
                                 <li><strong>Awards:</strong> Zero Project Awardee 2025 – ICT Employability Category.</li>
                                 <li><strong>Fellowships / accelerators:</strong> Mastercard Foundation EdTech Fellowship; Innovate Now (if applicable).</li>
@@ -4841,7 +5137,7 @@
 
                     <details class="about-details">
                         <summary>Where we’re going (What’s next)</summary>
-                        <div class="pt-2">
+                        <div class="about-details-panel">
                             <p><strong>Scaling Elimu Pepe Nationally</strong></p>
                             <p>In partnership with Safaricom, we are expanding Elimu Pepe across multiple counties to increase equitable access to curriculum-aligned digital learning content.</p>
                             <ul>
@@ -4872,10 +5168,12 @@
                             <p>We are piloting German and Mandarin language programs for 12,000+ learners, linked to international study opportunities and global workforce pathways.</p>
                         </div>
                     </details>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- About metrics (500+ schools, 100,000+ learners, 30 min) — hidden per request
         <div class="row g-3 mt-4">
             <div class="col-md-4">
                 <div class="about-metric">
@@ -4896,6 +5194,7 @@
                 </div>
             </div>
         </div>
+        -->
 
         <div class="row">
             <div class="col-12">
@@ -5426,13 +5725,13 @@
                                         --btn-padding-x: 18px
                                     }
                                 </style>
-                                <div id="solutions" class="section-margin-lg" data-loho-compact="320" data-loho-compact-label="Solutions">
+                                <div id="solutions" class="section-margin-lg">
                                     <div class="container">
                                         <div class="row justify-content-center">
                                             <div class="col-lg-10 text-center">
                                                 <div class="section-title">
                                                     <h2>Our Solutions</h2>
-                                                    <p>Explore our suite of offline-first, curriculum-aligned, and inclusive learning solutions. Click a solution to expand and view details.</p>
+                                                    <p>Elimu Pepe Kenya is our featured K–12 platform. Explore the full suite using the orange chips below — each opens in place so you stay in one focused view.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5447,67 +5746,13 @@
                                                     margin-top: 50px !important;
                                                 }
                                             }
-                                            #solutions .solutions-accordion details {
-                                                border: 1px solid rgba(31, 43, 64, 0.14);
-                                                border-radius: 18px;
-                                                background: #fff;
-                                                overflow: hidden;
-                                                box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
-                                            }
-
-                                            #solutions .solutions-accordion details + details {
-                                                margin-top: 14px;
-                                            }
-
-                                            #solutions .solutions-accordion summary {
-                                                cursor: pointer;
-                                                padding: 16px 18px;
-                                                font-weight: 800;
-                                                color: #1F2B40;
-                                                list-style: none;
-                                                display: flex;
-                                                align-items: center;
-                                                justify-content: space-between;
-                                                gap: 12px;
-                                            }
-
-                                            #solutions .solutions-accordion summary::-webkit-details-marker {
-                                                display: none;
-                                            }
-
-                                            #solutions .solutions-accordion summary .sub {
-                                                display: block;
-                                                font-weight: 600;
-                                                font-size: 13px;
-                                                color: var(--system_paragraph_color, #656A7B);
-                                                margin-top: 4px;
-                                            }
-
-                                            #solutions .solutions-accordion summary::after {
-                                                content: "+";
-                                                font-size: 22px;
-                                                line-height: 1;
-                                                opacity: 0.8;
-                                            }
-
-                                            #solutions .solutions-accordion details[open] summary {
-                                                background: rgba(206, 232, 255, 0.35);
-                                            }
-
-                                            #solutions .solutions-accordion details[open] summary::after {
-                                                content: "–";
-                                            }
-
-                                            #solutions .solutions-accordion .content {
-                                                padding: 0 18px 18px 18px;
-                                            }
-
                                             #solutions .solution-hero-card {
                                                 border: 1px solid rgba(31, 43, 64, 0.12);
                                                 border-radius: 22px;
                                                 background: #fff;
                                                 overflow: hidden;
                                                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+                                                scroll-margin-top: calc(var(--header-height, 88px) + 16px);
                                             }
 
                                             #solutions .solution-hero-card .meta {
@@ -5568,18 +5813,139 @@
                                                 height: auto;
                                                 display: block;
                                             }
+
+                                            /* Solution switcher: featured stage + chip navigation */
+                                            #solutions .solutions-switcher {
+                                                max-width: 1100px;
+                                                margin-left: auto;
+                                                margin-right: auto;
+                                            }
+
+                                            #solutions .solution-stage {
+                                                position: relative;
+                                                border-radius: 24px;
+                                                background: linear-gradient(145deg, rgba(255, 247, 237, 0.9) 0%, rgba(255, 255, 255, 0.98) 45%, rgba(241, 245, 249, 0.95) 100%);
+                                                box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+                                                padding: clamp(12px, 2vw, 20px);
+                                                overflow: hidden;
+                                            }
+
+                                            #solutions .solution-stage::before {
+                                                content: "";
+                                                position: absolute;
+                                                inset: 0;
+                                                border-radius: 24px;
+                                                pointer-events: none;
+                                                border: 1px solid rgba(31, 43, 64, 0.08);
+                                            }
+
+                                            #solutions .solution-panel {
+                                                position: relative;
+                                                z-index: 1;
+                                                display: none;
+                                                animation: solutionPanelIn 0.38s ease both;
+                                            }
+
+                                            #solutions .solution-panel.is-active {
+                                                display: block;
+                                            }
+
+                                            #solutions .solution-panel:not(.is-active) {
+                                                display: none !important;
+                                            }
+
+                                            @keyframes solutionPanelIn {
+                                                from {
+                                                    opacity: 0;
+                                                    transform: translateY(10px);
+                                                }
+                                                to {
+                                                    opacity: 1;
+                                                    transform: translateY(0);
+                                                }
+                                            }
+
+                                            @media (prefers-reduced-motion: reduce) {
+                                                #solutions .solution-panel {
+                                                    animation: none;
+                                                }
+                                            }
+
+                                            #solutions .solution-nav-chips {
+                                                display: flex;
+                                                flex-wrap: wrap;
+                                                gap: 10px;
+                                                justify-content: center;
+                                                margin-top: 22px;
+                                                padding: 8px 4px 12px;
+                                                position: relative;
+                                                z-index: 3;
+                                                touch-action: manipulation;
+                                                -webkit-tap-highlight-color: rgba(255, 255, 255, 0.25);
+                                            }
+
+                                            #solutions .solution-chip {
+                                                cursor: pointer;
+                                                border: none;
+                                                font-weight: 700;
+                                                font-size: clamp(0.78rem, 2.8vw, 0.9rem);
+                                                line-height: 1.25;
+                                                color: #fff;
+                                                text-align: left;
+                                                padding: 14px 18px;
+                                                min-height: 48px;
+                                                border-radius: 999px;
+                                                background: linear-gradient(180deg, #fb923c 0%, #ea580c 55%, #c2410c 100%);
+                                                box-shadow: 0 2px 0 rgba(0, 0, 0, 0.12), 0 8px 20px rgba(234, 88, 12, 0.28);
+                                                border: 1px solid rgba(255, 255, 255, 0.2);
+                                                transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+                                                flex: 1 1 auto;
+                                                min-width: min(100%, 148px);
+                                                max-width: 100%;
+                                                width: auto;
+                                                touch-action: manipulation;
+                                                -webkit-tap-highlight-color: rgba(255, 255, 255, 0.25);
+                                                box-sizing: border-box;
+                                            }
+
+                                            @media (min-width: 576px) {
+                                                #solutions .solution-chip {
+                                                    flex: 0 1 auto;
+                                                    max-width: min(100%, 300px);
+                                                }
+                                            }
+
+                                            #solutions .solution-chip:hover {
+                                                filter: brightness(1.06);
+                                            }
+
+                                            #solutions .solution-chip:focus {
+                                                outline: none;
+                                            }
+
+                                            #solutions .solution-chip:focus-visible {
+                                                outline: 3px solid #1f2b40;
+                                                outline-offset: 3px;
+                                            }
+
+                                            #solutions .solution-chip.is-active {
+                                                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.95), 0 0 0 5px rgba(234, 88, 12, 0.55), 0 12px 28px rgba(234, 88, 12, 0.4);
+                                                transform: translateY(-1px);
+                                            }
+
+                                            #solutions .solution-chip .solution-chip-sub {
+                                                display: block;
+                                                font-weight: 600;
+                                                font-size: 0.78em;
+                                                opacity: 0.92;
+                                                margin-top: 3px;
+                                            }
                                         </style>
 
-                                        <div class="solutions-accordion">
-                                            <details id="solution-elimu-pepe-kenya" open>
-                                                <summary>
-                                                    <span>
-                                                        Elimu Pepe Kenya (K–12 smart learning)
-                                                        <span class="sub">Smart Learning for a Smarter Generation</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
-                                                    <div id="elimu-pepe-kenya" class="solution-hero-card mt-3">
+                                        <div class="solutions-switcher">
+                                            <div class="solution-stage" id="solution-stage" aria-live="polite">
+                                                <div class="solution-panel is-active" id="solution-elimu-pepe-kenya" role="tabpanel" aria-labelledby="chip-solution-elimu-pepe-kenya">
+                                                    <div id="elimu-pepe-kenya" class="solution-hero-card mt-0">
                                                         <div class="row g-0 align-items-stretch">
                                                             <div class="col-lg-7">
                                                                 <div class="p-4 p-lg-5">
@@ -5624,17 +5990,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
 
-                                            <details id="solution-loho-uganda">
-                                                <summary>
-                                                    <span>
-                                                        LoHo Learning Uganda (K–12 smart learning)
-                                                        <span class="sub">Smart Learning for a Smarter Generation</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
+                                            <div class="solution-panel" id="solution-loho-uganda" role="tabpanel" aria-labelledby="chip-solution-loho-uganda">
                                                     <div class="solution-hero-card mt-3">
                                                         <div class="row g-0 align-items-stretch">
                                                             <!-- Left: solution overview + meta -->
@@ -5679,17 +6037,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
 
-                                            <details id="solution-esharah">
-                                                <summary>
-                                                    <span>
-                                                        eSharah (Inclusive technology suite)
-                                                        <span class="sub">eSharah: Inclusive Technology Suite</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
+                                            <div class="solution-panel" id="solution-esharah" role="tabpanel" aria-labelledby="chip-solution-esharah">
                                                     <div class="solution-hero-card mt-3">
                                                         <div class="row g-0 align-items-stretch">
                                                             <!-- Left: overview + who it serves -->
@@ -5730,17 +6080,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
 
-                                            <details id="solution-loho-campus">
-                                                <summary>
-                                                    <span>
-                                                        LoHo Campus (Higher &amp; lifelong learning)
-                                                        <span class="sub">Empowering the Future of Higher and Lifelong Learning</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
+                                            <div class="solution-panel" id="solution-loho-campus" role="tabpanel" aria-labelledby="chip-solution-loho-campus">
                                                     <div class="solution-hero-card mt-3">
                                                         <div class="row g-0 align-items-stretch">
                                                             <!-- Left: overview + core components -->
@@ -5780,17 +6122,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
 
-                                            <details id="solution-qureo">
-                                                <summary>
-                                                    <span>
-                                                        QUREO (ICT Skills for every learner)
-                                                        <span class="sub">Future‑ready coding and ICT skills for primary and junior secondary</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
+                                            <div class="solution-panel" id="solution-qureo" role="tabpanel" aria-labelledby="chip-solution-qureo">
                                                     <div class="solution-hero-card mt-3">
                                                         <div class="row g-0 align-items-stretch">
                                                             <!-- Left: overview -->
@@ -5849,17 +6183,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
 
-                                            <details id="solution-tofas">
-                                                <summary>
-                                                    <span>
-                                                        TOFAS (Fundamental Assessment for Mathematics and Coding)
-                                                        <span class="sub">Build strong foundations in maths and coding from day one</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
+                                            <div class="solution-panel" id="solution-tofas" role="tabpanel" aria-labelledby="chip-solution-tofas">
                                                     <div class="solution-hero-card mt-3">
                                                         <div class="p-4 p-lg-5">
                                                             <div class="text-primary fw-bold mb-2">TOFAS – Fundamental Assessment for Mathematics and Coding</div>
@@ -5896,17 +6222,9 @@
                                                             <a class="theme-btn" href="mailto:support@loholearning.co.ke?subject=TOFAS%20briefing%20or%20demo">Book a TOFAS briefing or demo</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
 
-                                            <details id="solution-simplified-iq">
-                                                <summary>
-                                                    <span>
-                                                        Simplified IQ (Assessment as a Service)
-                                                        <span class="sub">Powerful, AI‑driven assessments for schools and training</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
+                                            <div class="solution-panel" id="solution-simplified-iq" role="tabpanel" aria-labelledby="chip-solution-simplified-iq">
                                                     <div class="solution-hero-card mt-3">
                                                         <div class="p-4 p-lg-5">
                                                             <div class="text-primary fw-bold mb-2">SimplifiedIQ Assessments</div>
@@ -5945,17 +6263,9 @@
                                                             <a class="theme-btn" href="mailto:support@loholearning.co.ke?subject=SimplifiedIQ%20demo">Book a SimplifiedIQ demo</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
 
-                                            <details id="solution-content-library">
-                                                <summary>
-                                                    <span>
-                                                        LoHo Content Library (Content as a Service)
-                                                        <span class="sub">One contract. Thousands of high‑quality learning resources.</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
+                                            <div class="solution-panel" id="solution-content-library" role="tabpanel" aria-labelledby="chip-solution-content-library">
                                                     <div class="solution-hero-card mt-3">
                                                         <div class="p-4 p-lg-5">
                                                             <div class="text-primary fw-bold mb-2">LoHo Content Library (Content as a Service)</div>
@@ -6010,17 +6320,9 @@
                                                             <a class="theme-btn" href="mailto:support@loholearning.co.ke?subject=LoHo%20Content%20Library%20partnership">Talk to us about content partnerships</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
 
-                                            <details id="solution-infrastructure">
-                                                <summary>
-                                                    <span>
-                                                        LoHo Infrastructure (Device as a Service)
-                                                        <span class="sub">Devices without headaches. Learning as a service.</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
+                                            <div class="solution-panel" id="solution-infrastructure" role="tabpanel" aria-labelledby="chip-solution-infrastructure">
                                                     <div class="solution-hero-card mt-3">
                                                         <div class="p-4 p-lg-5">
                                                             <div class="text-primary fw-bold mb-2">LoHo Infrastructure (Device as a Service)</div>
@@ -6062,17 +6364,9 @@
                                                             <a class="theme-btn" href="mailto:support@loholearning.co.ke?subject=Device-as-a-Service%20(DaaS)">Talk to us about Device‑as‑a‑Service</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
 
-                                            <details id="solution-teacher-academy">
-                                                <summary>
-                                                    <span>
-                                                        Teacher Academy (Digital School for Teachers)
-                                                        <span class="sub">Confident teachers. Stronger digital classrooms.</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
+                                            <div class="solution-panel" id="solution-teacher-academy" role="tabpanel" aria-labelledby="chip-solution-teacher-academy">
                                                     <div class="solution-hero-card mt-3">
                                                         <div class="p-4 p-lg-5">
                                                             <div class="text-primary fw-bold mb-2">Teacher Academy (Digital School for Teachers)</div>
@@ -6113,17 +6407,9 @@
                                                             <a class="theme-btn" href="mailto:support@loholearning.co.ke?subject=Teacher%20Academy">Talk to us about Teacher Academy</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
 
-                                            <details id="solution-managed-services">
-                                                <summary>
-                                                    <span>
-                                                        LoHo Learning Managed Services (Mobile Device Management and Classroom Management Software)
-                                                        <span class="sub">Keep devices secure and classrooms focused, without overloading your IT team</span>
-                                                    </span>
-                                                </summary>
-                                                <div class="content">
+                                            <div class="solution-panel" id="solution-managed-services" role="tabpanel" aria-labelledby="chip-solution-managed-services">
                                                     <div class="solution-hero-card mt-3">
                                                         <div class="p-4 p-lg-5">
                                                             <div class="text-primary fw-bold mb-2">LoHo Learning Managed Services</div>
@@ -6169,38 +6455,108 @@
                                                             <a class="theme-btn" href="mailto:support@loholearning.co.ke?subject=Managed%20Services%20demo">Book a classroom and device management demo</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </details>
+                                            </div>
+                                        </div>
+
+                                        <nav class="solution-nav-chips" role="tablist" aria-label="Browse solutions">
+                                            <button type="button" class="solution-chip is-active" role="tab" aria-selected="true" aria-controls="solution-elimu-pepe-kenya" id="chip-solution-elimu-pepe-kenya">Elimu Pepe Kenya<span class="solution-chip-sub">K–12 · flagship</span></button>
+                                            <button type="button" class="solution-chip" role="tab" aria-selected="false" aria-controls="solution-loho-uganda" id="chip-solution-loho-uganda" tabindex="-1">LoHo Uganda<span class="solution-chip-sub">K–12 smart learning</span></button>
+                                            <button type="button" class="solution-chip" role="tab" aria-selected="false" aria-controls="solution-esharah" id="chip-solution-esharah" tabindex="-1">eSharah<span class="solution-chip-sub">Inclusive technology</span></button>
+                                            <button type="button" class="solution-chip" role="tab" aria-selected="false" aria-controls="solution-loho-campus" id="chip-solution-loho-campus" tabindex="-1">LoHo Campus<span class="solution-chip-sub">Higher &amp; lifelong</span></button>
+                                            <button type="button" class="solution-chip" role="tab" aria-selected="false" aria-controls="solution-qureo" id="chip-solution-qureo" tabindex="-1">QUREO<span class="solution-chip-sub">ICT &amp; coding skills</span></button>
+                                            <button type="button" class="solution-chip" role="tab" aria-selected="false" aria-controls="solution-tofas" id="chip-solution-tofas" tabindex="-1">TOFAS<span class="solution-chip-sub">Maths &amp; coding assessment</span></button>
+                                            <button type="button" class="solution-chip" role="tab" aria-selected="false" aria-controls="solution-simplified-iq" id="chip-solution-simplified-iq" tabindex="-1">Simplified IQ<span class="solution-chip-sub">Assessment as a service</span></button>
+                                            <button type="button" class="solution-chip" role="tab" aria-selected="false" aria-controls="solution-content-library" id="chip-solution-content-library" tabindex="-1">Content Library<span class="solution-chip-sub">Content as a service</span></button>
+                                            <button type="button" class="solution-chip" role="tab" aria-selected="false" aria-controls="solution-infrastructure" id="chip-solution-infrastructure" tabindex="-1">Infrastructure<span class="solution-chip-sub">Device as a service</span></button>
+                                            <button type="button" class="solution-chip" role="tab" aria-selected="false" aria-controls="solution-teacher-academy" id="chip-solution-teacher-academy" tabindex="-1">Teacher Academy<span class="solution-chip-sub">Digital school for teachers</span></button>
+                                            <button type="button" class="solution-chip" role="tab" aria-selected="false" aria-controls="solution-managed-services" id="chip-solution-managed-services" tabindex="-1">Managed Services<span class="solution-chip-sub">MDM &amp; classroom control</span></button>
+                                        </nav>
                                         </div>
 
                                         <script>
                                             (function() {
-                                                function closeOthers(openDetails) {
-                                                    document.querySelectorAll('#solutions .solutions-accordion details[open]').forEach(function(d) {
-                                                        if (d !== openDetails) d.removeAttribute('open');
-                                                    });
+                                                var switcher = document.querySelector('#solutions .solutions-switcher');
+                                                if (!switcher) return;
+                                                var stage = document.getElementById('solution-stage');
+
+                                                function eventToElement(ev) {
+                                                    var t = ev.target;
+                                                    if (!t) return null;
+                                                    if (t.nodeType === 1) return t;
+                                                    if (t.nodeType === 3 && t.parentElement) return t.parentElement;
+                                                    return null;
                                                 }
+
+                                                function chipFromEvent(ev) {
+                                                    var el = eventToElement(ev);
+                                                    if (!el || typeof el.closest !== 'function') return null;
+                                                    return el.closest('.solution-chip');
+                                                }
+
+                                                function showPanel(id) {
+                                                    if (!id) return;
+                                                    var active = document.getElementById(id);
+                                                    if (!active || !active.classList.contains('solution-panel')) return;
+                                                    var panels = switcher.querySelectorAll('.solution-panel');
+                                                    var chips = switcher.querySelectorAll('.solution-chip');
+                                                    panels.forEach(function(p) {
+                                                        var on = p.id === id;
+                                                        p.classList.toggle('is-active', on);
+                                                        p.setAttribute('aria-hidden', on ? 'false' : 'true');
+                                                    });
+                                                    chips.forEach(function(c) {
+                                                        var on = c.getAttribute('aria-controls') === id;
+                                                        c.classList.toggle('is-active', on);
+                                                        c.setAttribute('aria-selected', on ? 'true' : 'false');
+                                                        c.tabIndex = on ? 0 : -1;
+                                                    });
+                                                    if (stage) {
+                                                        requestAnimationFrame(function() {
+                                                            requestAnimationFrame(function() {
+                                                                try {
+                                                                    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                                                                    var anchor = active.querySelector('.solution-hero-card') || active;
+                                                                    anchor.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start', inline: 'nearest' });
+                                                                } catch (e2) {}
+                                                            });
+                                                        });
+                                                    }
+                                                    try {
+                                                        if (history.replaceState) history.replaceState(null, '', '#' + id);
+                                                    } catch (e1) {}
+                                                }
+
+                                                function onChipActivate(ev) {
+                                                    var btn = chipFromEvent(ev);
+                                                    if (!btn || !switcher.contains(btn)) return;
+                                                    var id = btn.getAttribute('aria-controls');
+                                                    if (!id) return;
+                                                    ev.preventDefault();
+                                                    showPanel(id);
+                                                }
+
+                                                switcher.addEventListener('click', onChipActivate);
 
                                                 function openFromHash() {
                                                     var id = (window.location.hash || '').replace('#', '');
                                                     if (!id) return;
-                                                    var el = document.getElementById(id);
-                                                    if (!el) return;
-                                                    var details = (el.tagName && el.tagName.toLowerCase() === 'details') ? el : el.closest('details');
-                                                    if (!details) return;
-                                                    details.setAttribute('open', '');
-                                                    closeOthers(details);
+                                                    var panel = document.getElementById(id);
+                                                    if (!panel || !panel.classList.contains('solution-panel')) return;
+                                                    showPanel(id);
                                                 }
 
-                                                document.addEventListener('toggle', function(e) {
-                                                    var target = e.target;
-                                                    if (target && target.tagName && target.tagName.toLowerCase() === 'details' && target.open && target.closest('#solutions .solutions-accordion')) {
-                                                        closeOthers(target);
-                                                    }
-                                                }, true);
+                                                function initAria() {
+                                                    switcher.querySelectorAll('.solution-panel').forEach(function(p) {
+                                                        p.setAttribute('aria-hidden', p.classList.contains('is-active') ? 'false' : 'true');
+                                                    });
+                                                }
 
+                                                initAria();
                                                 window.addEventListener('hashchange', openFromHash);
-                                                document.addEventListener('DOMContentLoaded', openFromHash);
+                                                document.addEventListener('DOMContentLoaded', function() {
+                                                    initAria();
+                                                    openFromHash();
+                                                });
                                             })();
                                         </script>
                                     </div>
@@ -6208,7 +6564,7 @@
                     <div class="row">
                         <div class="col-sm-12 ui-resizable" data-type="container-content">
                             <div data-type="component-text" data-preview="public/frontend/infixlmstheme/img/snippets/preview/home/4.jpg" data-aoraeditor-title="For Schools &amp; Organizations" data-aoraeditor-categories="Home Page">
-                                <div id="for-schools" class="section-margin-lg" data-loho-compact="400" data-loho-compact-label="Schools &amp; organizations">
+                                <div id="for-schools" class="section-margin-lg">
                                     <div class="container">
                                         <div class="row justify-content-center">
                                             <div class="col-lg-10 text-center">
@@ -6263,10 +6619,49 @@
                                                 text-align: center;
                                                 padding: 0 8px;
                                             }
+
+                                            #for-schools .for-schools-benefits-grid {
+                                                display: grid;
+                                                grid-template-columns: repeat(3, minmax(0, 1fr));
+                                                grid-template-rows: repeat(2, minmax(0, auto));
+                                                gap: 12px 14px;
+                                                list-style: none;
+                                                padding: 0;
+                                                margin: 0;
+                                                width: 100%;
+                                            }
+
+                                            #for-schools .for-schools-benefits-grid li {
+                                                margin: 0;
+                                                list-style: none;
+                                                padding: 12px 14px;
+                                                display: flex;
+                                                align-items: center;
+                                                min-height: 100%;
+                                                box-sizing: border-box;
+                                                line-height: 1.35;
+                                                background: rgba(255, 255, 255, 0.92);
+                                                border: 1px solid rgba(31, 43, 64, 0.1);
+                                                border-radius: 14px;
+                                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+                                            }
+
+                                            @media only screen and (max-width: 767px) {
+                                                #for-schools .for-schools-benefits-grid {
+                                                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                                                    grid-template-rows: none;
+                                                }
+                                            }
+
+                                            @media only screen and (max-width: 479px) {
+                                                #for-schools .for-schools-benefits-grid {
+                                                    grid-template-columns: 1fr;
+                                                }
+                                            }
                                         </style>
 
                                         <div class="row justify-content-center mb-3">
-                                            <div class="col-lg-10">
+                                            <div class="col-12 px-2 px-sm-3">
                                                 <figure class="for-schools-hero-banner mb-0">
                                                     <img src="public/images/for-schools-classroom.png" alt="Teacher in a LoHo Learning classroom supporting students using tablets and laptops, with lesson data on an interactive display—empowering teaching and reaching every learner." width="1600" height="800" loading="lazy" decoding="async">
                                                     <figcaption class="for-schools-hero-caption">Empowering teaching with data and devices—offline-capable learning in every classroom.</figcaption>
@@ -6275,19 +6670,19 @@
                                         </div>
 
                                         <div class="row justify-content-center">
-                                            <div class="col-lg-10">
+                                            <div class="col-12 px-2 px-sm-3">
                                                 <div class="solution-hero-card mt-2">
                                                     <div class="p-4 p-lg-5">
-                                                        <p class="mb-3"><strong>You already change lives!</strong> LoHo Learning helps you do it more powerfully. Our platform gives you the tools, data, and accessibility support to make every lesson engaging, and every learner visible.</p>
+                                                        <p class="mb-3 small text-muted">Tools, data, and accessibility so every lesson engages and every learner stays visible.</p>
 
-                                                        <div class="fw-bold text-primary mb-2">Why Teachers Love LoHo:</div>
-                                                        <ul class="mb-0 solution-feature">
-                                                            <li><strong>Free Teacher Support Resources</strong> — Schemes of Work, Lesson Plans, and Teacher Guides.</li>
-                                                            <li><strong>Auto-marked assignments + analytics</strong> — Learner resources and assignments are auto‑marked, with analytics available in the teacher dashboard.</li>
-                                                            <li><strong>Ready-to-Teach Resources</strong> — KICD‑aligned eBooks across subjects, interactive activities, and STEM simulations.</li>
-                                                            <li><strong>Smart Analytics</strong> — Instantly track engagement, identify knowledge gaps, and adapt instruction for better outcomes.</li>
-                                                            <li><strong>Inclusive Pedagogy</strong> — Built‑in accessibility tools make your classroom truly universal.</li>
-                                                            <li><strong>Professional Growth</strong> — Ongoing support and digital literacy training to strengthen your teaching.</li>
+                                                        <div class="fw-bold text-primary mb-3">Why teachers choose LoHo</div>
+                                                        <ul class="for-schools-benefits-grid mb-0 solution-feature small">
+                                                            <li>Free teacher support: schemes of work, lesson plans, guides</li>
+                                                            <li>Auto-marked assignments and teacher-dashboard analytics</li>
+                                                            <li>KICD-aligned eBooks, activities, and STEM simulations</li>
+                                                            <li>Engagement and learning-gap analytics</li>
+                                                            <li>Built-in accessibility for inclusive classrooms</li>
+                                                            <li>Ongoing training and digital literacy support</li>
                                                         </ul>
 
                                                         <div class="loho-quote mt-4">
