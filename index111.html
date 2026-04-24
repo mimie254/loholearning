@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loho Learning - Under Maintenance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #00adef 0%, #f0585a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            max-width: 700px;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .info {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px;
+            margin-top: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .info h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact {
+            margin-top: 25px;
+            font-size: 16px;
+        }
+
+        .contact-item {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .contact a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .contact a:hover {
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .icon-small {
+            font-size: 20px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 36px;
+            }
+            .icon {
+                font-size: 60px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .logo {
+                max-width: 150px;
+                padding: 15px;
+            }
+            .info {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="public/uploads/settings/logo.png" alt="Loho Learning Logo" class="logo">
+        </div>
+        <div class="icon">🔧</div>
+        <h1>Under Maintenance</h1>
+        <p>We're currently performing scheduled maintenance to improve your learning experience. We'll be back online shortly!</p>
+        
+        <div class="info">
+            <h2>What's happening?</h2>
+            <p>Our team at Loho Learning is working hard to enhance our platform and bring you new features. Thank you for your patience.</p>
+            <div class="contact">
+                <p style="margin-bottom: 15px; font-weight: 600;">Need assistance? Reach out to us:</p>
+                <div class="contact-item">
+                    <span class="icon-small">📧</span>
+                    <a href="mailto:support@loholearning.co.ke">support@loholearning.co.ke</a>
+                </div>
+                <div class="contact-item">
+                    <span class="icon-small">☎️</span>
+                    <a href="tel:+254797349396">0797 349396</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
