@@ -266,13 +266,13 @@ input[type=number] {
     display: inline-flex;
     align-items: center;
     border-radius: 100px;
-    background: #F81717;
+    background: #ea580c;
     background-size: 200% auto;
     color: #fff;
     font-size: 16px;
     line-height: 1.625;
     padding: var(--btn-padding-y) var(--btn-padding-x);
-    border: 1px solid transparent;
+    border: 1px solid #ea580c;
     justify-content: center;
     text-align: center;
     font-weight: 500
@@ -287,8 +287,8 @@ input[type=number] {
 
 .theme-btn:hover {
     color: #fff;
-    background-color: var(--system_secendory_color) !important;
-    border-color: var(--system_secendory_color)
+    background-color: #c2410c !important;
+    border-color: #c2410c
 }
 
 .theme-btn>* {
@@ -1123,7 +1123,7 @@ html[dir=rtl] .owl-carousel .owl-nav div:first-child {
 }
 
 .bg-red {
-    background-color: #F81717 !important
+    background-color: #ea580c !important
 }
 
 .-mt-55 {

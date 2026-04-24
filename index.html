@@ -104,6 +104,14 @@
 
 
 <body>
+    <script>
+        (function() {
+            try {
+                if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+                window.scrollTo(0, 0);
+            } catch (e) {}
+        })();
+    </script>
     <div class="preloader" dir="ltr">
         <div class='body'>
             <span>
@@ -126,6 +134,56 @@
         <h1>Loading ...</h1>
     </div>
 
+    <style>
+        /* Match Solutions / chip orange for solid CTAs (Bootstrap bg-danger on menu toggler, etc.) */
+        button.theme-btn.bg-danger,
+        button.theme-btn.thum-bar.bg-danger {
+            background-color: #ea580c !important;
+            border-color: #ea580c !important;
+        }
+        button.theme-btn.bg-danger:hover,
+        button.theme-btn.thum-bar.bg-danger:hover {
+            background-color: #c2410c !important;
+            border-color: #c2410c !important;
+        }
+        /* Use horizontal space on wide screens while staying inside Bootstrap gutters */
+        @media (min-width: 992px) {
+            #about-loho > .container,
+            #solutions > .container,
+            #for-schools > .container,
+            #for-parents > .container,
+            #eresources > .container,
+            #get-involved > .container,
+            #section-courses > .container,
+            #section-quizzes > .container,
+            #news-media > .container {
+                max-width: min(100vw - 32px, 1440px);
+            }
+            /* eResources: use nearly full viewport so the block does not read as a narrow left strip on wide screens */
+            #eresources > .container {
+                max-width: min(100vw - 32px, 1680px) !important;
+                width: 100%;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+        }
+        @media (min-width: 1600px) {
+            #about-loho > .container,
+            #solutions > .container,
+            #for-schools > .container,
+            #for-parents > .container,
+            #eresources > .container,
+            #get-involved > .container,
+            #section-courses > .container,
+            #section-quizzes > .container,
+            #news-media > .container {
+                max-width: min(100vw - 48px, 1680px);
+            }
+            #eresources > .container {
+                max-width: min(100vw - 48px, 1800px) !important;
+            }
+        }
+    </style>
 
     <link rel="stylesheet" href="public/whatsapp-support/style.css">
 
@@ -663,7 +721,7 @@
                                                 <ul class="submenu submenu--peek">
                                                     <li>
                                                         <p class="loho-peek-text">Support your child’s journey with transparent progress, offline access, and inclusive learning at home.</p>
-                                                        <a href="#for-parents" class="loho-peek-more" data-loho-expand="for-parents">Read more below</a>
+                                                        <a href="#for-parents" class="loho-peek-more">Jump to Parents &amp; Learners</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -1517,7 +1575,7 @@
                                         </div>
                                         <div class="container">
                                             <div class="row align-items-center">
-                                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                                <div class="col-12 col-md-10 col-lg-9 col-xl-8">
                                                     <div class="banner-text">
                                                         <h1 class="banner-headline-typewriter" aria-label="LoHo — Making quality education accessible, affordable, and inclusive for every learner.">
                                                             <span class="banner-headline-words" aria-hidden="true">
@@ -4836,7 +4894,7 @@
                                 <div id="about-loho" class="about section-margin-lg">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-10 text-center">
+            <div class="col-12 text-center px-2 px-sm-3">
                 <div class="section-title">
                     <h2>About LoHo Learning</h2>
                     <p>Who we are (Brief on LoHo)</p>
@@ -5022,7 +5080,7 @@
         </style>
 
         <div class="row justify-content-center mb-4">
-            <div class="col-lg-10">
+            <div class="col-12 px-2 px-sm-3">
                 <figure class="about-classroom-banner">
                     <img src="public/images/about-connected-classroom.png" alt="Inclusive connected classroom: learners and an educator using LoHo tablets with Elimu Pepe, digital lessons on screen, and LoHo Learning connected classroom materials." width="1600" height="900" loading="lazy" decoding="async">
                     <figcaption class="about-classroom-caption">Inclusive, technology-enabled learning — Elimu Pepe, LoHo tablets, and curriculum-aligned content in the classroom.</figcaption>
@@ -5728,7 +5786,7 @@
                                 <div id="solutions" class="section-margin-lg">
                                     <div class="container">
                                         <div class="row justify-content-center">
-                                            <div class="col-lg-10 text-center">
+                                            <div class="col-12 text-center px-2 px-sm-3">
                                                 <div class="section-title">
                                                     <h2>Our Solutions</h2>
                                                     <p>Elimu Pepe Kenya is our featured K–12 platform. Explore the full suite using the orange chips below — each opens in place so you stay in one focused view.</p>
@@ -5816,7 +5874,8 @@
 
                                             /* Solution switcher: featured stage + chip navigation */
                                             #solutions .solutions-switcher {
-                                                max-width: 1100px;
+                                                width: 100%;
+                                                max-width: 100%;
                                                 margin-left: auto;
                                                 margin-right: auto;
                                             }
@@ -6493,7 +6552,9 @@
                                                     return el.closest('.solution-chip');
                                                 }
 
-                                                function showPanel(id) {
+                                                function showPanel(id, opts) {
+                                                    opts = opts || {};
+                                                    var doScroll = opts.scroll !== false;
                                                     if (!id) return;
                                                     var active = document.getElementById(id);
                                                     if (!active || !active.classList.contains('solution-panel')) return;
@@ -6510,7 +6571,7 @@
                                                         c.setAttribute('aria-selected', on ? 'true' : 'false');
                                                         c.tabIndex = on ? 0 : -1;
                                                     });
-                                                    if (stage) {
+                                                    if (stage && doScroll) {
                                                         requestAnimationFrame(function() {
                                                             requestAnimationFrame(function() {
                                                                 try {
@@ -6537,12 +6598,12 @@
 
                                                 switcher.addEventListener('click', onChipActivate);
 
-                                                function openFromHash() {
+                                                function openFromHash(scrollToPanel) {
                                                     var id = (window.location.hash || '').replace('#', '');
                                                     if (!id) return;
                                                     var panel = document.getElementById(id);
                                                     if (!panel || !panel.classList.contains('solution-panel')) return;
-                                                    showPanel(id);
+                                                    showPanel(id, { scroll: !!scrollToPanel });
                                                 }
 
                                                 function initAria() {
@@ -6552,10 +6613,34 @@
                                                 }
 
                                                 initAria();
-                                                window.addEventListener('hashchange', openFromHash);
+                                                window.addEventListener('hashchange', function() {
+                                                    openFromHash(true);
+                                                });
                                                 document.addEventListener('DOMContentLoaded', function() {
+                                                    try {
+                                                        window.scrollTo(0, 0);
+                                                    } catch (e0) {}
                                                     initAria();
-                                                    openFromHash();
+                                                    /* Full reload with #solution-* in URL: sync active tab but stay at top of page */
+                                                    openFromHash(false);
+                                                    /* Browser may still scroll to the fragment target; snap back to top after paint */
+                                                    requestAnimationFrame(function() {
+                                                        requestAnimationFrame(function() {
+                                                            try {
+                                                                window.scrollTo(0, 0);
+                                                            } catch (e4) {}
+                                                        });
+                                                    });
+                                                });
+                                                window.addEventListener('load', function() {
+                                                    try {
+                                                        window.scrollTo(0, 0);
+                                                    } catch (e3) {}
+                                                    setTimeout(function() {
+                                                        try {
+                                                            window.scrollTo(0, 0);
+                                                        } catch (e5) {}
+                                                    }, 0);
                                                 });
                                             })();
                                         </script>
@@ -6567,7 +6652,7 @@
                                 <div id="for-schools" class="section-margin-lg">
                                     <div class="container">
                                         <div class="row justify-content-center">
-                                            <div class="col-lg-10 text-center">
+                                            <div class="col-12 text-center px-2 px-sm-3">
                                                 <div class="section-title">
                                                     <h2>For Schools &amp; Organizations</h2>
                                                     <p>Empower Your Teaching. Reach Every Learner.</p>
@@ -6701,11 +6786,11 @@
                     <div class="row">
                         <div class="col-sm-12 ui-resizable" data-type="container-content">
                             <div data-type="component-text" data-preview="public/frontend/infixlmstheme/img/snippets/preview/home/4.jpg" data-aoraeditor-title="For Parents &amp; Learners" data-aoraeditor-categories="Home Page">
-                                <div id="for-parents" class="section-margin-lg" data-loho-compact="300" data-loho-compact-scope=".for-parents-box" data-loho-compact-label="Parents &amp; learners">
+                                <div id="for-parents" class="section-margin-lg">
                                     <div class="container">
                                         <div class="for-parents-box">
                                         <div class="row justify-content-center">
-                                            <div class="col-lg-10 text-center">
+                                            <div class="col-12 text-center px-2 px-sm-3">
                                                 <div class="section-title">
                                                     <h2>For Parents &amp; Learners</h2>
                                                     <p>Your child’s success is visible. Accessible. Achievable.</p>
@@ -6750,62 +6835,53 @@
                                             #for-parents .section-title p {
                                                 color: #111111;
                                             }
+
+                                            #for-parents .for-parents-compact-copy {
+                                                font-size: 0.9rem;
+                                                line-height: 1.4;
+                                            }
+
+                                            #for-parents .for-parents-compact-copy ul {
+                                                margin: 0;
+                                                padding-left: 1.1rem;
+                                            }
+
+                                            #for-parents .for-parents-compact-copy li {
+                                                margin-bottom: 0.2rem;
+                                            }
                                         </style>
 
-                                        <div class="row justify-content-center g-4">
-                                            <div class="col-lg-5">
+                                        <div class="row justify-content-center g-3 g-lg-4">
+                                            <div class="col-md-6">
                                                 <div class="solution-hero-card h-100">
-                                                    <div class="p-4 p-lg-5">
-                                                        <div class="loho-card-title text-primary mb-2">Parents</div>
-                                                        <h3 class="mb-2">Your Child’s Success is Visible. Accessible. Achievable.</h3>
-                                                        <p>At LoHo Learning, we make parents part of the learning journey. You can now see your child’s progress, understand their learning style, and communicate in ways that strengthen their education and confidence.</p>
-
-                                                        <div class="fw-bold text-primary mt-4 mb-2">Why Parents Trust Us:</div>
-                                                        <ul class="mb-0 solution-feature">
-                                                            <li><strong>Transparency</strong> — Monitor performance through progress reports and analytics.</li>
-                                                            <li><strong>KICD‑Aligned Assurance</strong> — Resources align with Kenya’s curriculum.</li>
-                                                            <li><strong>Inclusive learning at home</strong> — Learn basic Kenya Sign Language (KSL) through parent‑friendly eBooks to communicate better with children who are Deaf.</li>
-                                                            <li><strong>Offline access</strong> — Resources that work even without internet, reaching rural and remote communities.</li>
+                                                    <div class="p-3 p-lg-4 for-parents-compact-copy">
+                                                        <div class="loho-card-title text-primary mb-1">Parents</div>
+                                                        <h3 class="h6 text-uppercase text-muted fw-semibold mb-2" style="letter-spacing: 0.02em;">Visible · Accessible · Achievable</h3>
+                                                        <p class="mb-2">Progress you can see, KICD-aligned content, KSL support at home, offline when you need it.</p>
+                                                        <ul class="small mb-2">
+                                                            <li>Reports &amp; analytics</li>
+                                                            <li>KICD-aligned &amp; inclusive resources</li>
+                                                            <li>Offline-first for every home</li>
                                                         </ul>
-
-                                                        <div class="loho-quote mt-4">
-                                                            <p class="mb-1">“For the first time, I can follow my child’s lessons and support them at home.”</p>
-                                                            <div class="small text-muted">Parent, Blooming Flowers</div>
-                                                        </div>
-
-                                                        <div class="mt-4 d-flex flex-wrap gap-2">
-                                                            <a class="theme-btn" href="mailto:support@loholearning.co.ke?subject=Parents%20and%20families%20support">Learn How We Support Families</a>
-                                                        </div>
+                                                        <p class="small fst-italic mb-2">“I can follow lessons and help at home.” <span class="text-muted fst-normal">— Parent, Blooming Flowers</span></p>
+                                                        <a class="theme-btn btn-sm" href="mailto:support@loholearning.co.ke?subject=Parents%20and%20families%20support">Family support</a>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-5">
+                                            <div class="col-md-6">
                                                 <div class="solution-hero-card h-100">
-                                                    <div class="p-4 p-lg-5">
-                                                        <div class="loho-card-title text-primary mb-2">Learners</div>
-                                                        <h3 class="mb-2">Learn Your Way. Engage Your World.</h3>
-                                                        <p>Every learner deserves an education that adapts to them. LoHo Learning’s digital platform lets you study at your pace, in your language, and in your style—whether you’re online or offline.</p>
-                                                        <div class="small text-muted mb-3">Coding at Alliance High School</div>
-
-                                                        <div class="fw-bold text-primary mb-2">What You Get:</div>
-                                                        <ul class="mb-0 solution-feature">
-                                                            <li><strong>Play learning</strong> — Enjoy the games while gaining knowledge at the same time.</li>
-                                                            <li><strong>Programming &amp; robotics</strong> — Interested in computer programming and robotics? We got you covered.</li>
-                                                            <li><strong>Career insights</strong> — Not sure which career path to take? Get into Elimu Pepe and explore insights.</li>
-                                                            <li><strong>STEM made simple</strong> — Is STEM giving you a tough time? We simplify it and keep it fun.</li>
-                                                            <li><strong>Interactive eBooks</strong> — eBooks that talk, sign, and show.</li>
-                                                            <li><strong>Revision made fun</strong> — Simple, accessible, and engaging revision.</li>
-                                                            <li><strong>Accessibility built in</strong> — Kenya Sign Language videos for foundational literacy &amp; numeracy, captions, voice narration, and adjustable text.</li>
-                                                            <li><strong>Instant feedback</strong> — Quizzes and activities that respond right away.</li>
-                                                            <li><strong>Progress tracking</strong> — See how far you’ve come.</li>
+                                                    <div class="p-3 p-lg-4 for-parents-compact-copy">
+                                                        <div class="loho-card-title text-primary mb-1">Learners</div>
+                                                        <h3 class="h6 text-uppercase text-muted fw-semibold mb-2" style="letter-spacing: 0.02em;">Your pace · Your language · Your style</h3>
+                                                        <p class="mb-2">Games, STEM, coding, robotics, Elimu Pepe career ideas—online or offline.</p>
+                                                        <ul class="small mb-2">
+                                                            <li>Playful lessons, eBooks &amp; revision</li>
+                                                            <li>Accessibility: KSL, captions, narration</li>
+                                                            <li>Quizzes, feedback &amp; progress tracking</li>
                                                         </ul>
-
-                                                        <p class="mt-3 mb-0">Learning becomes fun, interactive, and inclusive—no more one‑size‑fits‑all.</p>
-
-                                                        <div class="mt-4 d-flex flex-wrap gap-2">
-                                                            <a class="theme-btn" href="#solutions">Start Exploring</a>
-                                                        </div>
+                                                        <p class="small text-muted mb-2">Fun, inclusive learning—not one-size-fits-all.</p>
+                                                        <a class="theme-btn btn-sm" href="#solutions">Start exploring</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -6819,10 +6895,10 @@
                     <div class="row">
                         <div class="col-sm-12 ui-resizable" data-type="container-content">
                             <div data-type="component-text" data-preview="public/frontend/infixlmstheme/img/snippets/preview/home/4.jpg" data-aoraeditor-title="eResources" data-aoraeditor-categories="Home Page">
-                                <div id="eresources" class="section-margin-lg" data-loho-compact="300" data-loho-compact-label="eResources">
+                                <div id="eresources" class="section-margin-lg">
                                     <div class="container">
                                         <div class="row justify-content-center">
-                                            <div class="col-lg-10 text-center">
+                                            <div class="col-12 text-center px-2 px-sm-3">
                                                 <div class="section-title">
                                                     <h2>eResources</h2>
                                                     <p>A rich, inclusive library for every learner</p>
@@ -6850,197 +6926,66 @@
                                                 border-left: 4px solid rgba(31, 43, 64, 0.25);
                                                 padding-left: 14px;
                                             }
-                                            #eresources details {
-                                                border: 1px solid rgba(31, 43, 64, 0.14);
-                                                border-radius: 16px;
+                                            #eresources .eresources-compact-copy {
+                                                font-size: 0.9rem;
+                                                line-height: 1.4;
+                                            }
+                                            #eresources .eresources-compact-copy ol,
+                                            #eresources .eresources-compact-copy ul {
+                                                margin-bottom: 0.5rem;
+                                                padding-left: 1.1rem;
+                                            }
+                                            #eresources .eresources-compact-copy li {
+                                                margin-bottom: 0.2rem;
+                                            }
+                                            /* Match Solutions card chrome; section was full-width but inner copy looked like a narrow strip */
+                                            #eresources .solution-hero-card {
+                                                border: 1px solid rgba(31, 43, 64, 0.12);
+                                                border-radius: 22px;
                                                 background: #fff;
                                                 overflow: hidden;
+                                                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+                                                width: 100%;
+                                                max-width: 100%;
                                             }
-                                            #eresources summary {
-                                                cursor: pointer;
-                                                list-style: none;
-                                                padding: 14px 16px;
-                                                display: flex;
-                                                align-items: center;
-                                                justify-content: space-between;
-                                                gap: 12px;
-                                                font-weight: 800;
-                                                color: #1F2B40;
-                                            }
-                                            #eresources summary::-webkit-details-marker {
-                                                display: none;
-                                            }
-                                            #eresources summary::after {
-                                                content: "+";
-                                                font-size: 22px;
-                                                line-height: 1;
-                                                opacity: 0.85;
-                                            }
-                                            #eresources details[open] summary::after {
-                                                content: "–";
-                                            }
-                                            #eresources .collapse-content {
-                                                padding: 0 16px 16px 16px;
+                                            #eresources .eresources-compact-copy {
+                                                width: 100%;
                                             }
                                         </style>
 
                                         <div class="row justify-content-center">
-                                            <div class="col-lg-10">
+                                            <div class="col-12 px-2 px-sm-3">
                                                 <div class="solution-hero-card mt-2">
-                                                    <div class="p-4 p-lg-5">
-                                                        <p class="mb-3">The LoHo Learning eResource library brings together textbooks, revision guides, interactive CBC activities, LoHo TV videos, storybooks, Kenya Sign Language readers, STEM and science content, setbook support, and global reference resources, from Preschool to Grade 10 and Form 4.</p>
-                                                        <p class="mb-3">Search by grade, subject, content type, or partner and find exactly what you need for classwork, homework, or revision—online or offline.</p>
+                                                    <div class="p-3 p-lg-4 eresources-compact-copy">
+                                                        <div class="row g-4 g-xl-5 align-items-start">
+                                                            <div class="col-12 col-lg-7 mb-1 mb-lg-0">
+                                                                <p class="mb-2">Textbooks, revision, interactive CBC, LoHo TV, storybooks, KSL readers, STEM, setbooks, and global references—Pre‑primary through Grade 10 and Form 4.</p>
+                                                                <p class="mb-3">Filter by grade, subject, type, or partner; assign from your LoHo account—online or offline.</p>
 
-                                                        <div class="d-flex flex-wrap gap-2 mb-4">
-                                                            <a class="theme-btn" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20Browse%20all%20resources">Browse all resources</a>
-                                                            <a class="theme-btn bg-white" href="#eresources-filters">Filter by grade</a>
-                                                        </div>
-
-                                                        <div class="fw-bold text-primary mb-2">How to use the LoHo Library</div>
-                                                        <p class="mb-2">Find resources in three quick steps:</p>
-                                                        <ol class="mb-0 solution-feature" id="eresources-filters">
-                                                            <li><strong>Choose your learner level</strong> (Pre‑Primary, Primary, Junior Secondary, Secondary, TVET &amp; Higher Ed).</li>
-                                                            <li><strong>Filter by subject and content type</strong> (eBook, video, interactive CBC activity, homework, KSL reader, audio, etc.).</li>
-                                                            <li><strong>Open, download, or assign</strong> resources directly to learners and classes through your LoHo account.</li>
-                                                        </ol>
-
-                                                        <div class="fw-bold text-primary mt-4 mb-2">Curriculum‑aligned eBooks and textbooks</div>
-                                                        <p>High‑quality digital textbooks and learners’ books aligned to the Kenyan CBC and regional curricula, from lower primary to Grade 10 and Form 4.</p>
-                                                        <div class="fw-bold mt-3 mb-2">Highlights:</div>
-                                                        <ul class="mb-0 solution-feature">
-                                                            <li><strong>Longhorn Mathematics Grade 9</strong> — Full CBC‑aligned Mathematics coursebook for Grade 9 (algebra, geometry, statistics, exam‑style practice).</li>
-                                                            <li><strong>Longhorn English Activities Grade 2</strong> — CBC‑aligned exercises building reading, writing, speaking, and listening skills.</li>
-                                                            <li><strong>Longhorn Science and Technology Grade 5</strong> — Experiments, observations, and basic STEM projects.</li>
-                                                            <li><strong>Mwanga wa Kiswahili Gredi ya 6</strong> — Kiswahili textbook aligned to Kiswahili Mufti and CBC outcomes.</li>
-                                                            <li><strong>Agriculture Grade 8</strong> — Sustainable farming, food production, and environmental stewardship.</li>
-                                                        </ul>
-                                                        <div class="fw-bold text-primary mt-4 mb-2">Sub‑categories</div>
-                                                        <ul class="mb-0 solution-feature">
-                                                            <li>Primary (PP1–Grade 3)</li>
-                                                            <li>Upper primary (Grade 4–6)</li>
-                                                            <li>Junior secondary (Grade 7–9)</li>
-                                                            <li>Senior secondary (Form 1–4)</li>
-                                                            <li>Grade 10 textbook series (Mathematics, English, Sciences, CRE, Humanities, Business, Agriculture, etc.)</li>
-                                                        </ul>
-                                                        <a class="theme-btn mt-3" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20Curriculum%20eBooks">View all curriculum eBooks</a>
-
-                                                        <details class="mt-4">
-                                                            <summary><span>Show more eResource categories</span></summary>
-                                                            <div class="collapse-content">
-                                                                <div class="fw-bold text-primary mt-3 mb-2">Interactive CBC content</div>
-                                                                <p>Interactive activities designed specifically for CBC classrooms, helping learners practise competencies through games, simulations, and guided tasks.</p>
-                                                                <div class="fw-bold mt-3 mb-2">Highlights:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>Mathematics Activities Grade 1</strong> — Drag‑and‑drop, number recognition, and counting activities.</li>
-                                                                    <li><strong>Hygiene and Nutrition Activities Grade 1</strong> — Interactive tasks on hygiene, nutrition, and healthy habits.</li>
-                                                                    <li><strong>Environmental Activities Grade 2</strong> — CBC‑aligned activities exploring environment, family, and community.</li>
-                                                                    <li><strong>Language Activities PP1 &amp; PP2</strong> — Early literacy and language games in English and Kiswahili.</li>
-                                                                    <li><strong>CRE Activities PP1–Grade 3</strong> — Values, faith, and character formation in early grades.</li>
-                                                                </ul>
-                                                                <a class="theme-btn mt-3" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20Interactive%20CBC%20activities">Explore interactive CBC activities</a>
-
-                                                                <div class="fw-bold text-primary mt-4 mb-2">LoHo TV videos</div>
-                                                                <p>Short, engaging videos that bring concepts to life in Mathematics, Environmental Activities, Science, and Chemistry—from PP1 to Form 4.</p>
-                                                                <div class="fw-bold mt-3 mb-2">Lower primary examples:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>Family Needs</strong> — Grade 1 Environmental Activities video on needs vs wants.</li>
-                                                                    <li><strong>Cleaning and Safety at Home</strong> — Grade 1–2 videos on cleaning materials, preventing accidents, and safe waste disposal.</li>
-                                                                    <li><strong>Number Patterns and Counting</strong> — Grade 1 Mathematics videos on patterns and number lines.</li>
-                                                                </ul>
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Secondary Chemistry examples:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>Bunsen Burner and Flames</strong> — Form 1 videos on flames and lab safety.</li>
-                                                                    <li><strong>Separation Techniques</strong> — Chromatography, decantation, filtration, solvent extraction, and sublimation.</li>
-                                                                    <li><strong>Air and Oxygen</strong> — Burning in air, preparation of oxygen, and rusting.</li>
-                                                                </ul>
-                                                                <a class="theme-btn mt-3" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20LoHo%20TV">Watch LoHo TV videos</a>
-
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Revision guides and exam preparation</div>
-                                                                <p>Structured revision materials, past‑paper style questions, and holiday homework packs to help learners prepare for assessments and national exams.</p>
-                                                                <div class="fw-bold mt-3 mb-2">Highlights:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>KPSEA Success Blueprint (Grade 6)</strong> — Exam‑focused guide with sample questions and strategies.</li>
-                                                                    <li><strong>KJSEA Success Blueprint (Grade 9)</strong> — Consolidate Junior Secondary learning for transitions.</li>
-                                                                    <li><strong>Revision Mathematics Grade 4–6</strong> — Topic‑by‑topic practice with model answers.</li>
-                                                                    <li><strong>Revision Social Studies and Science Grade 4–6</strong> — CBC‑aligned summaries and question banks.</li>
-                                                                </ul>
-                                                                <a class="theme-btn mt-3" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20Revision%20and%20exam%20prep">Browse revision and exam prep</a>
-
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Holiday homework and practice packs</div>
-                                                                <p>Ready‑to‑use holiday homework booklets for PP1 to Grade 10 and Form 1–4, organised by term and level.</p>
-                                                                <div class="fw-bold mt-3 mb-2">Examples:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>April Holiday Homework PP1–Grade 9</strong> — Cross‑subject practice packs.</li>
-                                                                    <li><strong>August Holiday Homework Grade 1–9 and Form 1–4</strong> — Structured assignments across key subjects.</li>
-                                                                </ul>
-                                                                <a class="theme-btn mt-3" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20Holiday%20homework%20packs">View holiday homework packs</a>
-
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Storybooks, readers and setbooks</div>
-                                                                <p>A mix of local and global stories, readers, and setbook companions supporting literacy, comprehension, and literature study.</p>
-                                                                <div class="fw-bold mt-3 mb-2">Early readers and storybooks:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>Happy Hannah series</strong> — Inclusive early readers that introduce disability, empathy, and friendship.</li>
-                                                                    <li><strong>Smart Sidi series</strong> — Storybooks building fluency and life skills for Grades 1–3.</li>
-                                                                    <li><strong>Curious Koko series</strong> — Readers exploring nature, recycling, and community responsibility.</li>
-                                                                </ul>
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Upper primary and junior secondary readers:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>The Vanished Child and Other Stories</strong> — Grade 7 reader with questions and discussion prompts.</li>
-                                                                    <li><strong>A Handful of Millet</strong> and <strong>Different but the Same</strong> — Texts supporting critical thinking and character education.</li>
-                                                                </ul>
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Setbooks and core secondary texts:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>Milestones in History and Government</strong> — KCSE‑level text with exam‑style questions.</li>
-                                                                    <li><strong>Chemichemi za Kiswahili</strong>, <strong>Dynamics of Business Studies</strong>, <strong>Advancing in Mathematics</strong> — Core KCSE texts.</li>
-                                                                </ul>
-                                                                <a class="theme-btn mt-3" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20Storybooks%20and%20literature">Discover storybooks and literature</a>
-
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Kenya Sign Language and inclusive readers</div>
-                                                                <p>KSL readers and inclusive stories supporting Deaf learners and their families, plus accessible formats for learners with low vision or blindness.</p>
-                                                                <div class="fw-bold mt-3 mb-2">Examples:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>Karisa and the Charity Run (KSL reader)</strong> — Storybook with KSL interpretation.</li>
-                                                                    <li><strong>Familia Yetu Kenya Sign Language</strong> — Visual‑rich KSL reader on family and identity.</li>
-                                                                    <li><strong>Sungura na Nzige (KSL edition)</strong> — Kiswahili folktale adapted as a KSL reader.</li>
-                                                                </ul>
-                                                                <p class="mt-3 mb-0">Where available, these titles are also produced in digital Braille formats for Orbit Reader devices.</p>
-                                                                <a class="theme-btn mt-3" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20KSL%20and%20inclusive%20readers">Browse KSL and inclusive readers</a>
-
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Global STEM, science and reference content</div>
-                                                                <p>Curated global content mapped to CBC topics from Grade 3 to Grade 10.</p>
-                                                                <div class="fw-bold mt-3 mb-2">Examples:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>The Simple Science of…</strong> (Light/Magnets/Matter/Soil/Water) — Short illustrated science readers.</li>
-                                                                    <li><strong>Amazing Facts</strong> / <strong>Cool Facts</strong> — High‑interest non‑fiction to boost curiosity.</li>
-                                                                    <li><strong>Space Discoveries</strong> / <strong>The International Space Station</strong> — Integrated Science readers.</li>
-                                                                    <li><strong>Climate Change and You</strong> / <strong>Protecting Our Planet</strong> — Environmental and Geography resources.</li>
-                                                                </ul>
-                                                                <a class="theme-btn mt-3" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20STEM%20and%20reference">Explore STEM and reference resources</a>
-
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Life skills, SEL and health</div>
-                                                                <p>Resources that help learners understand themselves, manage emotions, and practise healthy habits.</p>
-                                                                <div class="fw-bold mt-3 mb-2">Examples:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>Dealing with Feeling</strong> series — Life Skills readers on emotions and social skills.</li>
-                                                                    <li><strong>I Eat Well</strong>, <strong>I Keep Clean</strong>, <strong>I Stay Active</strong> — Health and hygiene titles.</li>
-                                                                    <li><strong>Children at Work</strong>, <strong>How Rights Were Won</strong>, <strong>Voting</strong> — Rights, responsibilities, and citizenship readers.</li>
-                                                                </ul>
-                                                                <a class="theme-btn mt-3" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20Life%20skills%20and%20wellbeing">View life skills and wellbeing resources</a>
-
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Preschool and early years corner</div>
-                                                                <p>Picture‑rich resources for PP1–PP2 and early primary, supporting emergent literacy, numeracy, and world exploration.</p>
-                                                                <div class="fw-bold mt-3 mb-2">Examples:</div>
-                                                                <ul class="mb-0 solution-feature">
-                                                                    <li><strong>Counting in the Park / Forest / Sea</strong> — Early numeracy readers.</li>
-                                                                    <li><strong>People at School</strong>, <strong>My Wonderful Family</strong>, <strong>Shapes and Colours</strong> — Preschool readers.</li>
-                                                                    <li><strong>Where is Hare?</strong> and <strong>The Party</strong> — Short preschool animations.</li>
-                                                                </ul>
-                                                                <a class="theme-btn mt-3" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20Preschool%20resources">Browse Preschool &amp; PP1–PP2 resources</a>
-
-                                                                <div class="fw-bold text-primary mt-4 mb-2">Search and filter</div>
-                                                                <p class="mb-0">Use the filters to find exactly what you need. Choose the grade, subject, and content type, or search by keyword (for example: “Grade 7 Mathematics revision”, “Form 1 Chemistry video”, “KSL reader”, “holiday homework Grade 5”).</p>
+                                                                <div class="d-flex flex-wrap gap-2">
+                                                                    <a class="theme-btn btn-sm" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20Browse%20all%20resources">Browse all resources</a>
+                                                                    <a class="theme-btn btn-sm bg-white" href="#eresources-filters">Filter by grade</a>
+                                                                </div>
                                                             </div>
-                                                        </details>
+                                                            <div class="col-12 col-lg-5">
+                                                                <div class="fw-bold text-primary mb-2">How to use the library</div>
+                                                                <ol class="small mb-3 mb-lg-2" id="eresources-filters">
+                                                                    <li>Choose level (Pre‑primary → TVET / higher).</li>
+                                                                    <li>Filter subject &amp; type (eBook, video, CBC activity, KSL, audio…).</li>
+                                                                    <li>Open, download, or assign to classes.</li>
+                                                                </ol>
+
+                                                                <div class="fw-bold text-primary mb-1">Sample titles</div>
+                                                                <ul class="small mb-2">
+                                                                    <li>Longhorn Mathematics G9 · English Activities G2 · Science &amp; Tech G5</li>
+                                                                    <li>Mwanga wa Kiswahili G6 · Agriculture G8</li>
+                                                                </ul>
+                                                                <p class="small text-muted mb-0">Bands: PP1–G3 · G4–6 · G7–9 · Form 1–4 · Grade 10 subject series.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-3 pt-3 border-top" style="border-color: rgba(31, 43, 64, 0.12) !important;">
+                                                            <a class="theme-btn btn-sm" href="mailto:support@loholearning.co.ke?subject=eResources%20-%20Curriculum%20eBooks">Request the full catalogue</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -9192,10 +9137,10 @@
                                         margin-bottom: -40px;
                                     }
                                 </style>
-                                <div id="news-media" class="blog section-margin-lg position-relative" data-loho-compact="280" data-loho-compact-label="News &amp; media">
+                                <div id="news-media" class="blog section-margin-lg position-relative">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 text-center">
+            <div class="col-12 text-center px-2 px-sm-3">
                 <div class="section-title">
                     <h2>News &amp; Media</h2>
                     <p>See learning in action — classrooms, homes, and inclusive communities across Kenya and Africa.</p>
@@ -9522,10 +9467,10 @@
 </div>
 
                 <!-- Get Involved section (page section, right after News & Media) -->
-                <div id="get-involved" class="section-margin-lg" data-loho-compact="260" data-loho-compact-label="Get involved">
+                <div id="get-involved" class="section-margin-lg">
                     <div class="container">
                         <div class="row justify-content-center mb-4">
-                            <div class="col-lg-8 text-center">
+                            <div class="col-12 text-center px-2 px-sm-3">
                                 <div class="section-title">
                                     <h2>Get Involved</h2>
                                     <p>Careers, tenders, donations, and contact — join our mission for inclusive education.</p>
@@ -9533,13 +9478,100 @@
                             </div>
                         </div>
                         <div class="row justify-content-center mb-4">
-                            <div class="col-lg-10">
+                            <div class="col-12 px-2 px-sm-3">
                                 <div class="p-3 p-md-4 bg-white rounded-3 border shadow-sm text-center text-md-start" style="border-color: rgba(31, 43, 64, 0.12) !important;">
                                     <div class="fw-bold mb-1" style="color: #1F2B40;">Our mission</div>
-                                    <p class="mb-0 small text-muted" style="line-height: 1.5;">We build inclusive, connected classrooms across Africa. <a href="#about-loho" class="fw-semibold text-decoration-none" style="color: var(--system_primery_color, #38485c);">Read our full story</a>.</p>
+                                    <p class="mb-0 text-muted" style="line-height: 1.55; font-size: 1rem;">We build inclusive, connected classrooms across Africa.</p>
                                 </div>
                             </div>
                         </div>
+                        <style>
+                            #get-involved .gi-contact-compact,
+                            #getInvolvedModal .gi-contact-compact {
+                                font-size: 1rem;
+                                line-height: 1.45;
+                            }
+                            #get-involved .gi-contact-compact .small,
+                            #getInvolvedModal .gi-contact-compact .small {
+                                font-size: 0.9375rem;
+                            }
+                            #get-involved .gi-contact-compact .gi-contact-label,
+                            #getInvolvedModal .gi-contact-compact .gi-contact-label {
+                                font-size: 0.72rem;
+                                letter-spacing: 0.06em;
+                                text-transform: uppercase;
+                                color: #64748b;
+                                margin-bottom: 0.1rem;
+                            }
+                            #get-involved .gi-contact-compact .gi-contact-follow-label,
+                            #getInvolvedModal .gi-contact-compact .gi-contact-follow-label {
+                                font-size: 0.82rem;
+                                letter-spacing: 0.05em;
+                            }
+                            #get-involved .gi-donate-compact,
+                            #getInvolvedModal .gi-donate-compact {
+                                font-size: 1rem;
+                                line-height: 1.45;
+                            }
+                            #get-involved .gi-donate-compact .small,
+                            #getInvolvedModal .gi-donate-compact .small {
+                                font-size: 0.9375rem;
+                            }
+                            #get-involved .gi-donate-compact ul,
+                            #getInvolvedModal .gi-donate-compact ul {
+                                margin-bottom: 0;
+                                font-size: 1rem;
+                            }
+                            #get-involved .gi-donate-compact li,
+                            #getInvolvedModal .gi-donate-compact li {
+                                margin-bottom: 0.15rem;
+                            }
+                            #get-involved .gi-donate-compact .theme-btn,
+                            #getInvolvedModal .gi-donate-compact .theme-btn {
+                                font-size: 0.9375rem;
+                            }
+                            #get-involved .gi-careers-compact,
+                            #getInvolvedModal .gi-careers-compact {
+                                font-size: 1rem;
+                                line-height: 1.45;
+                            }
+                            #get-involved .gi-careers-compact ul,
+                            #getInvolvedModal .gi-careers-compact ul {
+                                margin-bottom: 0;
+                            }
+                            #get-involved .gi-careers-compact li,
+                            #getInvolvedModal .gi-careers-compact li {
+                                margin-bottom: 0.15rem;
+                            }
+                            #get-involved .gi-careers-compact .theme-btn,
+                            #getInvolvedModal .gi-careers-compact .theme-btn {
+                                font-size: 0.9375rem;
+                            }
+                            /* Exclusive accordion (data-bs-parent): one open at a time; tap header again to close all. Clearer chevron: down = closed, up = open. */
+                            #get-involved #getInvolvedSectionAccordion .accordion-button,
+                            #getInvolvedModal #giAccordion .accordion-button {
+                                min-height: 3.25rem;
+                                padding-top: 0.75rem;
+                                padding-bottom: 0.75rem;
+                            }
+                            #get-involved #getInvolvedSectionAccordion .accordion-button::after,
+                            #getInvolvedModal #giAccordion .accordion-button::after {
+                                flex-shrink: 0;
+                                width: 1.05rem;
+                                height: 1.05rem;
+                                background-size: 1.05rem 1.05rem;
+                                transform-origin: center;
+                                transition: transform 0.2s ease;
+                            }
+                            #get-involved #getInvolvedSectionAccordion .accordion-button.collapsed::after,
+                            #getInvolvedModal #giAccordion .accordion-button.collapsed::after {
+                                transform: rotate(0deg);
+                            }
+                            #get-involved #getInvolvedSectionAccordion .accordion-button:not(.collapsed)::after,
+                            #getInvolvedModal #giAccordion .accordion-button:not(.collapsed)::after {
+                                transform: rotate(-180deg);
+                            }
+                        </style>
                         <div class="row">
                             <div class="col-12">
                                 <div class="accordion" id="getInvolvedSectionAccordion">
@@ -9548,19 +9580,24 @@
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#giSectionCareers" aria-expanded="true" aria-controls="giSectionCareers">Careers</button>
                                         </h2>
                                         <div id="giSectionCareers" class="accordion-collapse collapse show" data-bs-parent="#getInvolvedSectionAccordion">
-                                            <div class="accordion-body">
-                                                <div class="fw-bold text-dark mb-2">Join a mission-driven team to transform education through inclusive technology.</div>
-                                                <p>At LoHo Learning, we are building innovative solutions powered by AI, accessibility design, and curriculum alignment to serve all learners — especially those with disabilities.</p>
-                                                <div class="fw-bold text-dark mt-3 mb-2">Why Work With Us?</div>
-                                                <ul class="solution-feature mb-0">
-                                                    <li>Purpose-driven work with measurable social impact</li>
-                                                    <li>Opportunity to shape inclusive EdTech in Africa</li>
-                                                    <li>Collaborative, innovative, and fast-growing environment</li>
-                                                    <li>Work at the intersection of AI, accessibility, and education</li>
-                                                </ul>
-                                                <div class="fw-bold text-dark mt-3 mb-2">Current Opportunities:</div>
-                                                <p class="mb-2">None at the moment — come back again!</p>
-                                                <a class="theme-btn" href="mailto:careers@loholearning.com?subject=Careers%20at%20LoHo%20Learning">Email careers@loholearning.com</a>
+                                            <div class="accordion-body gi-careers-compact py-3">
+                                                <p class="text-muted mb-2 lh-sm"><strong class="text-dark">Join a mission-driven team</strong> transforming education through inclusive technology. We build AI, accessibility, and curriculum-aligned products for every learner—especially learners with disabilities.</p>
+                                                <div class="row g-2 g-md-3 align-items-start">
+                                                    <div class="col-md-7">
+                                                        <div class="fw-bold text-dark mb-1">Why work with us</div>
+                                                        <ul class="solution-feature mb-0 ps-3">
+                                                            <li>Purpose-driven work with measurable social impact</li>
+                                                            <li>Shape inclusive EdTech across Africa</li>
+                                                            <li>Collaborative, innovative, fast-growing team</li>
+                                                            <li>AI, accessibility, and education together</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="fw-bold text-dark mb-1">Current opportunities</div>
+                                                        <p class="text-muted small mb-2 mb-md-2">None at the moment — check back again.</p>
+                                                        <a class="theme-btn btn-sm" href="mailto:careers@loholearning.com?subject=Careers%20at%20LoHo%20Learning">Email careers@loholearning.com</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -9579,25 +9616,31 @@
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#giSectionDonate" aria-expanded="false" aria-controls="giSectionDonate">Donate</button>
                                         </h2>
                                         <div id="giSectionDonate" class="accordion-collapse collapse" data-bs-parent="#getInvolvedSectionAccordion">
-                                            <div class="accordion-body">
-                                                <div class="fw-bold text-dark mb-2">Support Inclusive Education for All.</div>
-                                                <p>Your donation helps us:</p>
-                                                <ul class="solution-feature mb-0">
-                                                    <li>Develop Kenya Sign Language (KSL)-interpreted eBooks</li>
-                                                    <li>Build AI-powered accessibility tools</li>
-                                                    <li>Provide accessible learning resources to underserved schools</li>
-                                                    <li>Train teachers in inclusive digital pedagogy</li>
-                                                    <li>Expand assistive technology access for learners with disabilities</li>
-                                                </ul>
-                                                <div class="fw-bold text-dark mt-3 mb-2">Ways to Donate:</div>
-                                                <ul class="solution-feature mb-0">
-                                                    <li>One-Time Donation</li>
-                                                    <li>Monthly Giving Program</li>
-                                                    <li>Corporate Sponsorship</li>
-                                                    <li>Sponsor a School Initiative</li>
-                                                    <li>Device &amp; Connectivity Support</li>
-                                                </ul>
-                                                <p class="mt-3 mb-2">Every contribution brings us closer to a future where every learner — regardless of ability — has equal access to quality education.</p>
+                                            <div class="accordion-body gi-donate-compact py-3">
+                                                <p class="text-muted mb-2 lh-sm"><strong class="text-dark">Support inclusive education for all.</strong> Your donation funds KSL eBooks, accessibility tools, school resources, teacher training in inclusive digital pedagogy, and assistive technology—especially for learners with disabilities.</p>
+                                                <div class="row g-2 g-md-3">
+                                                    <div class="col-md-6">
+                                                        <div class="fw-bold text-dark mb-1">Your donation helps us</div>
+                                                        <ul class="solution-feature mb-0 ps-3">
+                                                            <li>KSL-interpreted eBooks</li>
+                                                            <li>AI-powered accessibility tools</li>
+                                                            <li>Resources for underserved schools</li>
+                                                            <li>Inclusive digital pedagogy for teachers</li>
+                                                            <li>Assistive technology access</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="fw-bold text-dark mb-1">Ways to donate</div>
+                                                        <ul class="solution-feature mb-0 ps-3">
+                                                            <li>One-time donation</li>
+                                                            <li>Monthly giving program</li>
+                                                            <li>Corporate sponsorship</li>
+                                                            <li>Sponsor a school initiative</li>
+                                                            <li>Device &amp; connectivity support</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <p class="text-muted mt-2 mb-2">Every contribution helps every learner access quality education—regardless of ability.</p>
                                                 <a class="theme-btn" href="mailto:donate@loholearning.com?subject=Donations%20and%20Sponsorship">Email donate@loholearning.com</a>
                                             </div>
                                         </div>
@@ -9608,9 +9651,8 @@
                                         </h2>
                                         <div id="giSectionInvestors" class="accordion-collapse collapse" data-bs-parent="#getInvolvedSectionAccordion">
                                             <div class="accordion-body">
-                                                <div class="text-center mb-4">
-                                                    <img src="public/images/founder.jpg" alt="LoHo Learning leadership" class="img-fluid rounded shadow" style="max-width: 280px; width: 100%; object-fit: cover;">
-                                                    <div class="fw-bold text-dark mt-3 mb-1">Investors and team</div>
+                                                <div class="mb-3">
+                                                    <div class="fw-bold text-dark mb-1">Investors and team</div>
                                                     <p class="small text-muted mb-0">Leadership behind LoHo Learning’s mission for inclusive, connected education.</p>
                                                 </div>
                                                 <p class="mb-0">Investment opportunities: none listed at the moment — check back again soon.</p>
@@ -9622,25 +9664,42 @@
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#giSectionContact" aria-expanded="false" aria-controls="giSectionContact">Contact Us</button>
                                         </h2>
                                         <div id="giSectionContact" class="accordion-collapse collapse" data-bs-parent="#getInvolvedSectionAccordion">
-                                            <div class="accordion-body">
-                                                <div class="fw-bold text-dark mb-2">We’d love to hear from you.</div>
-                                                <p>Whether you are a school, parent, NGO, corporate partner, policymaker, or donor, LoHo Learning is committed to responding promptly and working collaboratively to advance inclusive education for all learners.</p>
-                                                <div class="fw-bold text-dark mt-3 mb-2">Head Office</div>
-                                                <p class="mb-0"><strong>LoHo Learning</strong><br>9210-00300<br>Funzi Road, Industrial Area<br>Nairobi, Kenya</p>
-                                                <p class="mt-2"><em>(Serving schools and institutions across Kenya and Sub-Saharan Africa.)</em></p>
-                                                <div class="fw-bold text-dark mt-3 mb-2">General Inquiries</div>
-                                                <p class="mb-1"><a href="mailto:Support@loholearning.co.ke">Support@loholearning.co.ke</a></p>
-                                                <div class="fw-bold text-dark mt-3 mb-2">Partnerships &amp; Institutional Collaboration</div>
-                                                <p class="mb-1"><a href="mailto:partnerships@loholearning.com">partnerships@loholearning.com</a></p>
-                                                <div class="fw-bold text-dark mt-3 mb-2">Schools &amp; Teacher Support</div>
-                                                <p class="mb-1"><a href="mailto:schools@loholearning.com">schools@loholearning.com</a></p>
-                                                <div class="fw-bold text-dark mt-3 mb-2">Careers</div>
-                                                <p class="mb-1"><a href="mailto:careers@loholearning.com">careers@loholearning.com</a></p>
-                                                <div class="fw-bold text-dark mt-3 mb-2">Donations &amp; Sponsorship</div>
-                                                <p class="mb-2"><a href="mailto:donate@loholearning.com">donate@loholearning.com</a></p>
-                                                <div class="fw-bold text-dark mt-3 mb-2">Follow Us</div>
-                                                <p class="mb-2">Stay connected for updates on inclusive education, accessibility innovation, and new product releases. Social — Facebook, X, Instagram, LinkedIn, YouTube, TikTok</p>
-                                                <div class="d-flex flex-wrap gap-3">
+                                            <div class="accordion-body gi-contact-compact py-3">
+                                                <p class="text-muted mb-2 mb-md-3 lh-sm"><strong class="text-dark">We’d love to hear from you.</strong> Schools, parents, NGOs, partners, policymakers, donors — we respond promptly and work with you on inclusive education.</p>
+                                                <div class="row g-2 g-md-3">
+                                                    <div class="col-md-4">
+                                                        <div class="fw-bold text-dark mb-1">Head office</div>
+                                                        <p class="mb-0 lh-sm text-muted"><strong class="text-dark">LoHo Learning</strong><br>9210-00300 · Funzi Road, Industrial Area<br>Nairobi, Kenya</p>
+                                                        <p class="fst-italic text-muted mb-0 mt-1" style="font-size: 0.875rem;">Kenya &amp; Sub-Saharan Africa.</p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="fw-bold text-dark mb-1">Email</div>
+                                                        <div class="row row-cols-1 row-cols-sm-2 g-2">
+                                                            <div>
+                                                                <div class="gi-contact-label">General</div>
+                                                                <a class="text-break d-block" href="mailto:Support@loholearning.co.ke">Support@loholearning.co.ke</a>
+                                                            </div>
+                                                            <div>
+                                                                <div class="gi-contact-label">Partnerships</div>
+                                                                <a class="text-break d-block" href="mailto:partnerships@loholearning.com">partnerships@loholearning.com</a>
+                                                            </div>
+                                                            <div>
+                                                                <div class="gi-contact-label">Schools &amp; teachers</div>
+                                                                <a class="text-break d-block" href="mailto:schools@loholearning.com">schools@loholearning.com</a>
+                                                            </div>
+                                                            <div>
+                                                                <div class="gi-contact-label">Careers</div>
+                                                                <a class="text-break d-block" href="mailto:careers@loholearning.com">careers@loholearning.com</a>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="gi-contact-label">Donations</div>
+                                                                <a class="text-break d-block" href="mailto:donate@loholearning.com">donate@loholearning.com</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="border-top pt-2 mt-2 d-flex flex-wrap align-items-baseline gap-2 gi-links">
+                                                    <span class="fw-bold text-dark gi-contact-follow-label text-uppercase">Follow</span>
                                                     <a href="https://www.facebook.com/Loholearning/" target="_blank" rel="noopener">Facebook</a>
                                                     <a href="https://x.com/LoHoLearning" target="_blank" rel="noopener">X</a>
                                                     <a href="https://www.instagram.com/loholearning/" target="_blank" rel="noopener">Instagram</a>
@@ -10190,19 +10249,24 @@
                                             </button>
                                         </h2>
                                         <div id="giCareers" class="accordion-collapse collapse show" aria-labelledby="giHeadingCareers" data-bs-parent="#giAccordion">
-                                            <div class="accordion-body">
-                                                <div class="gi-title gi-accent mb-2">Join a mission-driven team to transform education through inclusive technology.</div>
-                                                <p>At LoHo Learning, we are building innovative solutions powered by AI, accessibility design, and curriculum alignment to serve all learners — especially those with disabilities.</p>
-                                                <div class="gi-title gi-accent mt-3 mb-2">Why Work With Us?</div>
-                                                <ul class="solution-feature mb-0">
-                                                    <li>Purpose-driven work with measurable social impact</li>
-                                                    <li>Opportunity to shape inclusive EdTech in Africa</li>
-                                                    <li>Collaborative, innovative, and fast-growing environment</li>
-                                                    <li>Work at the intersection of AI, accessibility, and education</li>
-                                                </ul>
-                                                <div class="gi-title gi-accent mt-3 mb-2">Current Opportunities:</div>
-                                                <p class="mb-2">None at the moment — come back again!</p>
-                                                <a class="theme-btn" href="mailto:careers@loholearning.com?subject=Careers%20at%20LoHo%20Learning">Email careers@loholearning.com</a>
+                                            <div class="accordion-body gi-careers-compact py-3">
+                                                <p class="text-muted mb-2 lh-sm"><strong class="text-dark">Join a mission-driven team</strong> transforming education through inclusive technology. We build AI, accessibility, and curriculum-aligned products for every learner—especially learners with disabilities.</p>
+                                                <div class="row g-2 g-md-3 align-items-start">
+                                                    <div class="col-md-7">
+                                                        <div class="gi-title gi-accent mb-1" style="font-size: 0.92rem;">Why work with us</div>
+                                                        <ul class="solution-feature mb-0 ps-3">
+                                                            <li>Purpose-driven work with measurable social impact</li>
+                                                            <li>Shape inclusive EdTech across Africa</li>
+                                                            <li>Collaborative, innovative, fast-growing team</li>
+                                                            <li>AI, accessibility, and education together</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="gi-title gi-accent mb-1" style="font-size: 0.92rem;">Current opportunities</div>
+                                                        <p class="text-muted small mb-2 mb-md-2">None at the moment — check back again.</p>
+                                                        <a class="theme-btn btn-sm" href="mailto:careers@loholearning.com?subject=Careers%20at%20LoHo%20Learning">Email careers@loholearning.com</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -10227,25 +10291,31 @@
                                             </button>
                                         </h2>
                                         <div id="giDonate" class="accordion-collapse collapse" aria-labelledby="giHeadingDonate" data-bs-parent="#giAccordion">
-                                            <div class="accordion-body">
-                                                <div class="gi-title gi-accent mb-2">Support Inclusive Education for All.</div>
-                                                <p>Your donation helps us:</p>
-                                                <ul class="solution-feature mb-0">
-                                                    <li>Develop Kenya Sign Language (KSL)-interpreted eBooks</li>
-                                                    <li>Build AI-powered accessibility tools</li>
-                                                    <li>Provide accessible learning resources to underserved schools</li>
-                                                    <li>Train teachers in inclusive digital pedagogy</li>
-                                                    <li>Expand assistive technology access for learners with disabilities</li>
-                                                </ul>
-                                                <div class="gi-title gi-accent mt-3 mb-2">Ways to Donate:</div>
-                                                <ul class="solution-feature mb-0">
-                                                    <li>One-Time Donation</li>
-                                                    <li>Monthly Giving Program</li>
-                                                    <li>Corporate Sponsorship</li>
-                                                    <li>Sponsor a School Initiative</li>
-                                                    <li>Device &amp; Connectivity Support</li>
-                                                </ul>
-                                                <p class="mt-3 mb-2">Every contribution brings us closer to a future where every learner — regardless of ability — has equal access to quality education.</p>
+                                            <div class="accordion-body gi-donate-compact py-3">
+                                                <p class="text-muted mb-2 lh-sm"><strong class="text-dark">Support inclusive education for all.</strong> Your donation funds KSL eBooks, accessibility tools, school resources, teacher training in inclusive digital pedagogy, and assistive technology—especially for learners with disabilities.</p>
+                                                <div class="row g-2 g-md-3">
+                                                    <div class="col-md-6">
+                                                        <div class="gi-title gi-accent mb-1" style="font-size: 0.92rem;">Your donation helps us</div>
+                                                        <ul class="solution-feature mb-0 ps-3">
+                                                            <li>KSL-interpreted eBooks</li>
+                                                            <li>AI-powered accessibility tools</li>
+                                                            <li>Resources for underserved schools</li>
+                                                            <li>Inclusive digital pedagogy for teachers</li>
+                                                            <li>Assistive technology access</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="gi-title gi-accent mb-1" style="font-size: 0.92rem;">Ways to donate</div>
+                                                        <ul class="solution-feature mb-0 ps-3">
+                                                            <li>One-time donation</li>
+                                                            <li>Monthly giving program</li>
+                                                            <li>Corporate sponsorship</li>
+                                                            <li>Sponsor a school initiative</li>
+                                                            <li>Device &amp; connectivity support</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <p class="text-muted mt-2 mb-2">Every contribution helps every learner access quality education—regardless of ability.</p>
                                                 <a class="theme-btn" href="mailto:donate@loholearning.com?subject=Donations%20and%20Sponsorship">Email donate@loholearning.com</a>
                                             </div>
                                         </div>
@@ -10259,9 +10329,8 @@
                                         </h2>
                                         <div id="giInvestors" class="accordion-collapse collapse" aria-labelledby="giHeadingInvestors" data-bs-parent="#giAccordion">
                                             <div class="accordion-body">
-                                                <div class="text-center mb-4">
-                                                    <img src="public/images/founder.jpg" alt="LoHo Learning leadership" class="img-fluid rounded shadow" style="max-width: 280px; width: 100%; object-fit: cover;">
-                                                    <div class="gi-title gi-accent mt-3 mb-1">Investors and team</div>
+                                                <div class="mb-3">
+                                                    <div class="gi-title gi-accent mb-1">Investors and team</div>
                                                     <p class="small text-muted mb-0">Leadership behind LoHo Learning’s mission for inclusive, connected education.</p>
                                                 </div>
                                                 <p class="mb-0">Investment opportunities: none listed at the moment — check back again soon.</p>
@@ -10276,27 +10345,42 @@
                                             </button>
                                         </h2>
                                         <div id="giContact" class="accordion-collapse collapse" aria-labelledby="giHeadingContact" data-bs-parent="#giAccordion">
-                                            <div class="accordion-body">
-                                                <div class="gi-title gi-accent mb-2">We’d love to hear from you.</div>
-                                                <p>Whether you are a school, parent, NGO, corporate partner, policymaker, or donor, LoHo Learning is committed to responding promptly and working collaboratively to advance inclusive education for all learners.</p>
-
-                                                <div class="gi-title gi-accent mt-3 mb-2">Head Office</div>
-                                                <p class="mb-0"><strong>LoHo Learning</strong><br>9210-00300<br>Funzi Road, Industrial Area<br>Nairobi, Kenya</p>
-                                                <p class="mt-2"><em>(Serving schools and institutions across Kenya and Sub-Saharan Africa.)</em></p>
-
-                                                <div class="gi-title gi-accent mt-3 mb-2">Email contacts</div>
-                                                <ul class="solution-feature mb-0 gi-links">
-                                                    <li><strong>General Inquiries</strong>: <a href="mailto:Support@loholearning.co.ke">Support@loholearning.co.ke</a></li>
-                                                    <li><strong>Partnerships &amp; Institutional Collaboration</strong>: <a href="mailto:partnerships@loholearning.com">partnerships@loholearning.com</a></li>
-                                                    <li><strong>Schools &amp; Teacher Support</strong>: <a href="mailto:schools@loholearning.com">schools@loholearning.com</a></li>
-                                                    <li><strong>Careers</strong>: <a href="mailto:careers@loholearning.com">careers@loholearning.com</a></li>
-                                                    <li><strong>Donations &amp; Sponsorship</strong>: <a href="mailto:donate@loholearning.com">donate@loholearning.com</a></li>
-                                                </ul>
-
-                                                <div class="gi-title gi-accent mt-3 mb-2">Follow Us</div>
-                                                <p class="mb-2">Stay connected for updates on inclusive education, accessibility innovation, and new product releases.</p>
-                                                <p class="mb-2 small">Social — Facebook, X, Instagram, LinkedIn, YouTube, TikTok</p>
-                                                <div class="d-flex flex-wrap gap-3 gi-links">
+                                            <div class="accordion-body gi-contact-compact py-3">
+                                                <p class="text-muted mb-2 mb-md-3 lh-sm"><strong class="text-dark">We’d love to hear from you.</strong> Schools, parents, NGOs, partners, policymakers, donors — we respond promptly and work with you on inclusive education.</p>
+                                                <div class="row g-2 g-md-3">
+                                                    <div class="col-md-4">
+                                                        <div class="gi-title gi-accent mb-1" style="font-size: 0.92rem;">Head office</div>
+                                                        <p class="mb-0 lh-sm text-muted"><strong class="text-dark">LoHo Learning</strong><br>9210-00300 · Funzi Road, Industrial Area<br>Nairobi, Kenya</p>
+                                                        <p class="fst-italic text-muted mb-0 mt-1" style="font-size: 0.875rem;">Kenya &amp; Sub-Saharan Africa.</p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="gi-title gi-accent mb-1" style="font-size: 0.92rem;">Email</div>
+                                                        <div class="row row-cols-1 row-cols-sm-2 g-2 gi-links">
+                                                            <div>
+                                                                <div class="gi-contact-label">General</div>
+                                                                <a class="text-break d-block" href="mailto:Support@loholearning.co.ke">Support@loholearning.co.ke</a>
+                                                            </div>
+                                                            <div>
+                                                                <div class="gi-contact-label">Partnerships</div>
+                                                                <a class="text-break d-block" href="mailto:partnerships@loholearning.com">partnerships@loholearning.com</a>
+                                                            </div>
+                                                            <div>
+                                                                <div class="gi-contact-label">Schools &amp; teachers</div>
+                                                                <a class="text-break d-block" href="mailto:schools@loholearning.com">schools@loholearning.com</a>
+                                                            </div>
+                                                            <div>
+                                                                <div class="gi-contact-label">Careers</div>
+                                                                <a class="text-break d-block" href="mailto:careers@loholearning.com">careers@loholearning.com</a>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="gi-contact-label">Donations</div>
+                                                                <a class="text-break d-block" href="mailto:donate@loholearning.com">donate@loholearning.com</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="border-top pt-2 mt-2 d-flex flex-wrap align-items-baseline gap-2 gi-links">
+                                                    <span class="gi-title gi-accent mb-0 gi-contact-follow-label text-uppercase">Follow</span>
                                                     <a href="https://www.facebook.com/Loholearning/" target="_blank" rel="noopener">Facebook</a>
                                                     <a href="https://x.com/LoHoLearning" target="_blank" rel="noopener">X</a>
                                                     <a href="https://www.instagram.com/loholearning/" target="_blank" rel="noopener">Instagram</a>
